@@ -3,4 +3,155 @@
 
 .body {
     background-color: @color-02;
+    position: relative;
+    &::after {
+        content: '';
+        background-image: url(../../assets/img/detal.png);
+        background-size: cover;
+        width: 100%;
+        height: 40.6em;
+        position: absolute;
+        bottom: 7.5em;
+        z-index: 0;
+    }
+
+    section {
+        position: relative;
+        z-index: 1;
+        padding: 10em 18em;
+
+        h3 {
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        form {
+            margin: 10em 0 0;
+            background-color: @color-white;
+            display: flex;
+            flex-direction: column;
+            padding: 10em 6em 8em;
+            .input-wrapper {
+                label {
+                    p {
+                        font-size: 3em;
+                        margin: 0 0 .5em;
+                    }
+                }
+                input {
+                    background-color: @color-03;
+                    width: -webkit-fill-available;
+                    border: none;
+                    border-bottom: .2em solid @color-black;
+                    font-size: 3em;
+                    padding: .5em;
+                }
+            }
+
+            .input-wrapper + .input-wrapper {
+                margin: 4.5em 0 0;
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.6em;
+                margin: 10.4em 0 0;
+                .boxInput {
+                    border: solid .4rem @color-black !important;
+                    width: 2.5em;
+                    height: 2.5em;
+                    input[type="checkbox"] {
+                        width: 100%;
+                        height: 100%;
+                        cursor: pointer;
+                        border: none;
+                        border-radius: 0;
+                    }
+                    
+                    input[type="checkbox"]:hover,
+                    input[type="checkbox"]:checked {
+                        background-color: @color-01;
+                        border: none;
+                    }
+                    
+                    input[type="checkbox"] {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        border: none;
+                        border-radius: 0;
+                        padding: 0;
+                        display: inline-block;
+                        position: relative;
+                    }
+                    
+                    input[type="checkbox"]:hover::after,
+                    input[type="checkbox"]:checked::after {
+                        content: "";
+                        position: absolute;
+                        left: .6em;
+                        top: -0.2em;
+                        width: .9em;
+                        height: 1.8em;
+                        border: solid @color-white;
+                        border-width: 0 0.4em 0.4em 0;
+                        transform: rotate(45deg);
+                    }
+                }
+                p {
+                    width: auto;
+                    font-size: 1.8em;
+                    font-weight: 600;
+                    margin: 0;
+                }
+            }
+
+            .cad {
+                cursor: pointer;
+                background-color: @color-01;
+                border: none;
+                font-size: 4.5em;
+                font-weight: 600;
+                color: @color-white;
+                margin: 5em 0 0;
+                padding: .2em;
+                transition-duration: .3s;
+                &:hover {
+                    transform: scale(1.02);
+                }
+            }
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        background-color: @color-black;
+        width: 100%;
+        height: 7.7em;
+        display: flex;
+        justify-content: flex-end;
+        button {
+            background-color: @color-01;
+            width: 18.4em;
+            height: 100%;
+            p {
+                font-size: 3em;
+                margin: 0;
+                font-weight: 600;
+                color: @color-white;
+                text-transform: uppercase;
+                transition-duration: .3s;
+            }
+            &:hover {
+                p {
+                    transform: scale(1.07);
+                }
+            }
+        }
+    }
+
 }
