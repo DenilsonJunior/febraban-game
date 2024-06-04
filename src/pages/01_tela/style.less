@@ -1,0 +1,28 @@
+@import '../../less/includes/colors.less';
+@import '../../less/includes/fonts.less';
+
+.body {
+    background-image: url(../../assets/img/capa.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    button {
+        background-color: @color-01;
+        width: 62em;
+        height: 8em;
+        margin-bottom: 20em;
+        transition-duration: .3s;
+
+        p {
+            font-size: 5em;
+            margin: 0;
+            color: @color-white;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}

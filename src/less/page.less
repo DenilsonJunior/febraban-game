@@ -1,0 +1,70 @@
+@import 'includes/imports.less';
+
+/* less components */
+@import 'includes/component/guide.less';
+@import 'includes/component/accordeon.less';
+@import 'includes/component/quiz.less';
+@import 'includes/component/component.slider.less';
+@import 'includes/component/component.modal.less';
+@import 'includes/component/component.acessibilidade.less';
+@import 'includes/component/component.libras.less';
+@import 'includes/component/avatar.less';
+@import 'includes/component/equipamentos.less';
+@import 'includes/component/conquistas.less';
+@import 'includes/component/ballon.less';
+@import 'includes/component/instrucoes.less';
+@import 'includes/component/menuScreen.less';
+@import 'includes/exercise/exercise.pick-x.less';
+
+/* less template */
+@import 'includes/import-fonts.less';
+@import 'includes/spacers.less';
+@import 'includes/colors.less';
+@import 'includes/fonts.less';
+@import 'includes/buttons.less';
+@import 'includes/defaults.less';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10em;
+    border-bottom: .8em solid @color-black;
+    .logo {
+        width: 25em;
+        height: 18em;
+        object-fit: contain;
+    }
+    .fullscreen {
+        width: 6.2em;
+        margin: 0;
+        padding: 0;
+        transition-duration: .3s;
+        img {
+            width: 100%;
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+i {
+    font-weight: 500 !important;
+}
+
+p {
+	font-size: .9em;
+}
+
+ul {
+    padding: 0 0 0 1.5em;
+}
+
+.hide {
+	display: none !important;
+}
