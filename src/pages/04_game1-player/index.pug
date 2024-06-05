@@ -7,14 +7,17 @@ block body
 	.body#app
 		+header
 
-		.gameBase 
+		.boxTop
+			h2.title Jogo da<br> Memória
 			.info
-				div
-					//- span.label Time:
-					span.value {{ time }} 
+				+image('time.png', 'timer')
+				span.value {{ time }} 
 				//- div
 				//- 	span.label Turns:
 				//- 	span.value {{ turns }} 
+
+		.gameBase
+			p Os nossos docentes especialistas no mercado financeiro vão te ensinar tudo sobre <b>fundamentos, conceitos, regras e práticas</b> que você precisa saber para aplicar no seu dia a dia de trabalho.
 			.cards
 				.card(v-for="card in cards", :class="{ flipped: card.flipped, found: card.found }", @click="flipCard(card)")
 					.back
@@ -27,9 +30,7 @@ block body
 					.score Score: {{ score }}
 					button.newGame(@click="resetGame()") New game
 		
-		footer
-			//- button
-				p Menu
+		+footer
 		
 block scripts
 	+scriptScripts('vue.min.js')

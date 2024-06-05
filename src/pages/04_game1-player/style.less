@@ -4,66 +4,70 @@
 .body {
     background-color: @color-03;
     position: relative;
-    // &::after {
-    //     content: '';
-    //     background-image: url(../../assets/img/detal1.png);
-    //     background-size: cover;
-    //     width: 100%;
-    //     height: 40.6em;
-    //     position: absolute;
-    //     bottom: 7.5em;
-    //     z-index: 0;
-    // }
+    .boxTop {
+        height: 26em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-image: url(../../assets/img/topogame.jpg);
+        background-size: cover;
+        padding: 0 18em;
+        .top {
+            width: 100%;
+        }
+        .title {
+            color: @color-02;
+            font-size: 5em;
+            text-transform: uppercase;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 2em;
+            .timer {
+                width: 6.5em;
+            }
+            .value {
+                color: @color-white;
+                font-size: 3em;
+            }
+        }
+    }
 
     footer {
-        position: absolute;
-        bottom: 0;
-        background-color: @color-black;
-        width: 100%;
-        height: 7.7em;
-    }
-
-}
-
-
-.info {
-    text-align: center;
-    padding-bottom: 1em;
-    font-size: 12em;
-
-
-    & div {
-        display: inline-block;
-        width: 5em;
-        & .label {
-            margin-right: 0.5em;
-        }
-    
-        &  .value {
-           font-weight: bold;
+        &::before {
+            background-color: @color-02;
         }
     }
-
-    
 }
 
-.cards{
-    position: relative;
-    margin: 0 auto;
-    width: 75.8em;
+.gameBase {
+    padding: 4em 16em 0;
+    p {
+        font-size: 3em;
+        margin: 0 0 1.5em;
+    }
+    .cards {
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .card {
+            position: relative;
+            display: inline-block;
+            width: 24.6em;
+            height: 18em;
+            margin: 0.4em 0.3em;
+            -moz-transition: opacity 0.5s;
+            -o-transition: opacity 0.5s;
+            -webkit-transition: opacity 0.5s;
+            transition: opacity 0.5s;
+        }
+    }
 }
 
-.cards .card {
-    position: relative;
-    display: inline-block;
-    width: 24.6em;
-    height: 18em;
-    margin: 0.4em 0.3em;
-    -moz-transition: opacity 0.5s;
-    -o-transition: opacity 0.5s;
-    -webkit-transition: opacity 0.5s;
-    transition: opacity 0.5s;
-}
 
 .cards .card .front,
 .cards .card .back {
