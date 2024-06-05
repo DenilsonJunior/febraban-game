@@ -1,0 +1,26 @@
+@import '../../less/includes/colors.less';
+@import '../../less/includes/fonts.less';
+
+.body {
+    background-color: @color-02;
+    position: relative;
+    &::after {
+        content: '';
+        background-image: url(../../assets/img/detal1.png);
+        background-size: cover;
+        width: 100%;
+        height: 40.6em;
+        position: absolute;
+        bottom: 7.5em;
+        z-index: 0;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        background-color: @color-black;
+        width: 100%;
+        height: 7.7em;
+    }
+
+}
