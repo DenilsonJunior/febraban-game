@@ -42,13 +42,41 @@
         align-items: center;
         button {
             margin: 3em 0 0;
+            position: relative;
+            &:hover {
+                .img {
+                    transform: scale(1.02);
+                }
+            }
             .img {
+                transition-duration: .3s;
                 width: 60em;
+                position: relative;
+                z-index: 1;
             }
             h2 {
                 font-size: 5em;
-                margin: 0;
+                margin: .2em 0 0;
                 text-transform: uppercase;
+            }
+            &::after,
+            &::before {
+                content: '';
+                width: 17.5em;
+                height: 19.5em;
+                background-image: url(../../assets/img/detal3.png);
+                // background-color: red;
+                background-size: cover;
+                position: absolute;
+                z-index: 0;
+            }
+            &::after {
+                bottom: 10em;
+                right: -13em;
+            }
+            &::before {
+                bottom: 6.3em;
+                left: -13em;
             }
         }
     }
