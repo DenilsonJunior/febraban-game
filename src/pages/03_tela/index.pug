@@ -1,0 +1,34 @@
+extends ../../templates/page/template.page-base-adaptativo.pug
+
+block styles
+	link(rel="stylesheet", href="style.css")
+
+block body
+	.body
+		+header
+
+		section.sec1
+			p Transformando os conhecimentos do mercado financeiro em experiências de aprendizagem.
+			p <b>Entre no jogo e descubra as experiências educacionais que a Febraban Educação oferece para você e sua instituição!</b>
+
+		section.sec2
+			.box
+				p Clique na sua área de interesse.
+			button.menu.menu1
+				+image('menu1.png','img')
+				h2 Cursos Ao Vivo
+			button.menu.menu2
+				+image('menu2.png','img')
+				h2 Certificação
+			button.menu.menu3
+				+image('menu3.png','img')
+				h2 Cursos Online (EAD)
+
+			
+		
+		footer
+			//- button
+				p Menu
+		
+block scripts
+	script(src="script.js")
