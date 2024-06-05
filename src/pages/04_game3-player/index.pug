@@ -6,10 +6,17 @@ block styles
 block body
 	.body
 		+header
+
+		.boxTop
+			h2.title Caça <br>Palavras
+			.info
+				+image('time.png', 'timer')
+				span.value {{ time }} 
+				//- div
+				//- 	span.label Turns:
+				//- 	span.value {{ turns }} 
 		
-		footer
-			//- button
-				p Menu
+		+footer 
 		
 block scripts
 	script(src="script.js")
