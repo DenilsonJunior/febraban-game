@@ -9,27 +9,31 @@ block body
 
 		section
 			h3 Para começar, que tal fornecer as informações para aparecer no nosso ranking?
-			form(action="" method="")
+			.form
 				.input-wrapper
 					label(for="nome") 
-						p Nome: 
-					input(type="text")
+						p *Nome: 
+					input#name(type="text")
+					small.alertName Preencha o nome. 
 				.input-wrapper
 					label(for="email") 
-						p E-mail: 
-					input(type="mail")
+						p *E-mail: 
+					input#email(type="mail")
+					small.alertEmail E-mail invalido.
 				.input-wrapper
 					label(for="empresa") 
 						p Empresa: 
-					input(type="text")
+					input#empresa(type="text")
 				.flex
 					.boxInput
 						input.check(type="checkbox")
 					p Quero receber as informações da Febraban Educação.
-				input.cad(type="submit" value="CADASTRAR")
+				
+				button.cadastro
+					h2 Cadastro
 		
 		footer
-			button
+			button(onclcik="navigate.goto('02_menu')")
 				p Menu
 		
 block scripts

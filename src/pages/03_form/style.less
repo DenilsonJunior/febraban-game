@@ -26,13 +26,14 @@
             text-transform: uppercase;
         }
 
-        form {
+        .form {
             margin: 10em 0 0;
             background-color: @color-white;
             display: flex;
             flex-direction: column;
             padding: 10em 6em 8em;
             .input-wrapper {
+                position: relative;
                 label {
                     p {
                         font-size: 3em;
@@ -46,6 +47,15 @@
                     border-bottom: .2em solid @color-black;
                     font-size: 3em;
                     padding: .5em;
+                }
+                small {
+                    color: @color-01;
+                    font-size: 2.5em;
+                    margin: 0.5em 0 0 !important;
+                    position: absolute;
+                    text-align: right;
+                    width: 100%;
+                    display: none;
                 }
             }
 
@@ -109,16 +119,19 @@
                 }
             }
 
-            .cad {
+            .cadastro {
                 cursor: pointer;
                 background-color: @color-01;
                 border: none;
-                font-size: 4.5em;
-                font-weight: 600;
-                color: @color-white;
                 margin: 5em 0 0;
                 padding: .2em;
                 transition-duration: .3s;
+                h2 {
+                    font-size: 4.5em;
+                    font-weight: 600;
+                    color: @color-white;
+                    margin: 0;
+                }
                 &:hover {
                     transform: scale(1.02);
                 }
