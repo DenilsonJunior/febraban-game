@@ -17,6 +17,7 @@ $(document).ready(function() {
         let cards = [].concat(_.cloneDeep(CardTypes), _.cloneDeep(CardTypes));
         return _.shuffle(cards);
     }
+
     new Vue({
         el: "#app",
         

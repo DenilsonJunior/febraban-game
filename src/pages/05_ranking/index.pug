@@ -6,10 +6,29 @@ block styles
 block body
 	.body
 		+header
+
+		+image('rak.jpg', 'imgTop')
+
+		section.sec1
+			p Você conquistou <b>[<span class='score'>X</span> pontos]</b> ao explorar as experiências educacionais oferecidas pela Febraban Educação. Confira a sua colocação no nosso ranking!
+			.ranking
+				h2 Ranking
+				.boxRanking
+					.rankingScore
+						p.nome Nome 1
+						p -
+						p.score 100 pontos
 		
-		footer
-			//- button
-				p Menu
+		section.sec2
+			h2 Temos muito mais para você! 
+			p Continue explorando, aprendendo e se envolvendo com as iniciativas educacionais da Febraban. Acesse o nosso site febrabaneducacao.com.br para conhecer as nossas soluções de aprendizagem.
+			.flex 
+				.text
+					h2 E, não para por aí!
+					p Acesse QR Code para conhecer as nossas soluções In Company feitas especialmente para atender as necessidades e desafios da sua instituição.
+				+image('qrcode.jpg', 'qr')
+
+		+footer
 		
 block scripts
 	script(src="script.js")

@@ -4,23 +4,98 @@
 .body {
     background-color: @color-02;
     position: relative;
-    &::after {
-        content: '';
-        background-image: url(../../assets/img/detal1.png);
-        background-size: cover;
+
+    .imgTop {
         width: 100%;
-        height: 40.6em;
-        position: absolute;
-        bottom: 7.5em;
-        z-index: 0;
+    }
+
+    .sec1 {
+        background-color: @color-03;
+        padding: 4em 18em 0;
+        margin: -.5em 0 0;
+        height: 65em;
+        position: relative;
+        
+        p {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .ranking {
+            background-color: @color-white;
+            width: 64em;
+            height: 55em;
+            margin: 4em 0 0;
+            position: absolute;
+            z-index: 1;
+            border-bottom: .4em solid @color-black;
+            padding: 2em 4em;
+            h2 {
+                font-size: 4em;
+                color: @color-01;
+                text-transform: uppercase;
+                margin: 0;
+            }
+            .boxRanking {
+                margin-top: 2em;
+                display: flex;
+                flex-direction: column;
+                gap: .5em;
+                max-height: 47.5em;
+                overflow: auto;
+                .rankingScore {
+                    background-color: @color-03;
+                    padding: .4em 2em;
+                    display: flex;
+                    gap: 1em;
+                    border-left: .5em solid @color-04;
+                }
+
+                &::-webkit-scrollbar {
+                    width: .8em;
+                }
+                
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background: @color-white;
+                }
+                
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background: @color-01;
+                }
+                
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    background: @color-01;
+                }
+            }
+        }
+    }
+
+    .sec2 {
+        padding: 12em 18em 0;
+        h2 {
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 3em;
+        }
+        .flex {
+            display: flex;
+            gap: 4em;
+            .qr {
+                width: 24.5em;
+                height: 24.5em;
+            }
+        }
     }
 
     footer {
-        position: absolute;
-        bottom: 0;
-        background-color: @color-black;
-        width: 100%;
-        height: 7.7em;
+        &::before {
+            background-color: @color-02;
+        }
     }
-
 }
