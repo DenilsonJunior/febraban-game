@@ -13,29 +13,28 @@ $(document).ready(function() {
             $('.alertName').css('display', 'block');
             return false
         }
-        if ( email.length == 0 || !IsEmail(email) ) {
+        if ( email.length == 0 || !validateEmail(email) ) {
             $('.alertEmail').css('display', 'block');
             return false
         }
+
+        const dados = {
+                "name":name,
+                "emal":email,
+                "empresa":empresa
+        }
         
-        // alert('Sucesso!')
-        navigate.goto(`04_game${game}-intro`);
+        $('body').trigger('cadastro', [ dados ] );
+        setTimeout(()=>{
+            navigate.goto(`04_game${game}-intro`);
+        }, 1000 * 0.12 )
+        
     });
 
-    function IsEmail(email) {
-        // Expressão regular para excluir caracteres inválidos
-        var exclude = /[^a-zA-Z0-9@.-]|^[_@.-]|[._-]{2}|[@.]{2}|(@)[^@]*\1/;
-        // Expressão regular para verificar a presença de um @ seguido por caracteres válidos
-        var check = /@[a-zA-Z0-9-]+\./;
-        // Expressão regular para verificar a terminação com domínio de 2 a 6 caracteres
-        var checkend = /\.[a-zA-Z]{2,6}$/;
-    
-        // Verifica se o email atende todas as condições
-        if (email.search(exclude) != -1 || email.search(check) == -1 || email.search(checkend) == -1) {
-            return false;
-        } else {
-            return true;
-        }
+    function validateEmail(email) {
+        // Advanced regex for email validation
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
     }
     
 
