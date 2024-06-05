@@ -6,13 +6,22 @@ block styles
 block body
 	.body
 		+header
-		
-		button.initGame
-			h2 Iniciar Game
 
-		footer
-			//- button
-				p Menu
+		section
+			+image('pers2.jpg', 'capa')
+			.boxText
+				h2 Regras do Jogo
+				p O objetivo do jogo é descobrir o nome da Certificação Febraban Educação utilizando as dicas fornecidas e selecionando as letras corretas.
+				p Para isso, você receberá um total de 3 dicas, uma de cada vez.
+				p Acada dica, você deve selecionar uma letra que acredita fazer parte do nome da Certificação.
+				p Se a letra estiver correta, ela será revelada na posição correspondente na palavra oculta. Agora, se a letra estiver incorreta, ela não aparecerá e o participante deve tentar outra letra na próxima rodada.
+				p Após a terceira dica, o participante terá <b>15 segundos</b> para adivinhar o nome completo da Certificação.
+				p <b>Preparado? Então, vamos lá!</b>
+
+				button.initGame
+					h2 Jogar
+		
+		+footer
 		
 block scripts
 	script(src="script.js")

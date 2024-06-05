@@ -1,44 +1,4 @@
-mixin help()
-    +modal("help", "modal modal-theme-01")
-        .conteinerModal
-            .lad.lad1
-                .title
-                    +image('btnHelp.svg', 'ico')
-                    p(tabindex=acessib_count++) AJUDA
-                .containerPeixe
-                    +image('peixe.png')
-                    .balao
-                        h1(tabindex=acessib_count++) Como jogar
-                        p(tabindex=acessib_count++) Tome decisões durante a trajetória, sempre pensando em sua missão e no objetivo de atingir todos os indicadores.
-                        p(tabindex=acessib_count++) Atenção para as recompensas! Você poderá ganhar muitas durante o jogo.
-                        p(tabindex=acessib_count++) Use os recursos de navegação sempre <br>que precisar, conforme ao lado.
-
-            .lad.lad2
-                .it
-                    +image('btnHome.svg')
-                    p( tabindex=acessib_count++ ) Tela inicial do curso
-                .it
-                    +image('btnMap.svg')
-                    p( tabindex=acessib_count++ ) Mapa da jornada
-                .it
-                    +image('btnMascote.svg')
-                    p( tabindex=acessib_count++ ) Mascote
-                .it
-                    +image('btnHelp.svg')
-                    p( tabindex=acessib_count++ ) Ajuda
-                .it
-                    +image('btnAvancar.svg')
-                    p( tabindex=acessib_count++ ) Avançar
-                .it
-                    +image('btnVoltar.svg')
-                    p( tabindex=acessib_count++ ) Voltar
-                .it
-                    +image('button-close.svg')
-                    p( tabindex=acessib_count++ ) Fechar
-                .it
-                    +image('btnAcessibilidad.svg')
-                    p( tabindex=acessib_count++ ) Acessa o game em cores de contraste, adequado para pessoas com daltonismo ou baixa visão.
-                .it
-                    +image('btnLibras.svg')
-                    p( tabindex=acessib_count++ ) Recurso de Libras, recomendável para pessoas com deficiência auditiva. Clique na frase que deseja ler.
-
+mixin footer()
+    footer
+        button(onclick='navigate.goto("02_menu")')
+            p Menu
