@@ -1,21 +1,56 @@
 // | gameWord
 // | shuffleArray | removeDiacritics -> game2.js
 
+var countdownTimer = function (duration) {
+  let timer = duration,
+    minutes,
+    seconds;
+  const interval = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    $(".info .value").text(minutes + ":" + seconds);
+
+    if (--timer < 0) {
+      clearInterval(interval);
+      this.time = "00:00";
+      $(".info .value").text("00:00");
+      // alert("Tempo esgotado!");
+      navigate.goto(`05_ranking`);
+    }
+  }, 1000);
+};
+
 $(document).ready(function () {
   var shuffledWord = shuffleArray(gameWord);
   var selectWord = shuffledWord[0].word;
   var wordArr = selectWord.split("");
 
+  var gameCurrent = 2;
+  var timePosTip = 15;
   var shuffledTips = shuffleArray(shuffledWord[0].tips);
   var tipCurrent = 0;
   var tipMax = 3;
   var wordCalc = 0;
 
-  function countWord(keys) {}
+  $(".info .value").text("00:15");
 
-  function activeTime() {}
+  function countWord(keys) {
+    $("body").trigger("game", [gameCurrent, keys]);
+  }
 
-  function completeWord() {}
+  function activeTime() {
+    countdownTimer(timePosTip);
+  }
+
+  function completeWord() {
+    setTimeout(function () {
+      navigate.goto(`05_ranking`);
+    }, 1000 * 1);
+  }
 
   function tip() {
     if (tipCurrent <= tipMax - 1) {
