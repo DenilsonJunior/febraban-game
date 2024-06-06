@@ -27,16 +27,16 @@ var countdownTimer = function (duration) {
 $(document).ready(function () {
   var shuffledWord = shuffleArray(gameWord);
   var selectWord = shuffledWord[0].word;
+  var shuffledTips = shuffleArray(shuffledWord[0].tips);
   var wordArr = selectWord.split("");
 
   var gameCurrent = 2;
   var timePosTip = 15;
-  var shuffledTips = shuffleArray(shuffledWord[0].tips);
-  var tipCurrent = 0;
   var tipMax = 3;
+  var tipCurrent = 0;
   var wordCalc = 0;
 
-  $(".info .value").text("00:15");
+  $(".info .value").text(`00:${timePosTip}`);
 
   function countWord(keys) {
     $("body").trigger("game", [gameCurrent, keys]);
