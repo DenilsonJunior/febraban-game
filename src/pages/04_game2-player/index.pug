@@ -9,85 +9,73 @@ block body
 		+topgame('Qual é a Certificação?')
 
 		.gameBase
-			.dica
+			.tip
 				.indice 
 				.text É um importante instrumento de controle e governança nas instituições financeiras, auxiliando na identificação e prevenção de irregularidades.
 			.cards
-				.card
-					.front
-					.back
-						span P 
-				.card
-					.front
-					.back
-						span A
-				.card
-					.front
-					.back
-						span T 
-				.card
-					.front
-					.back
-						span A
-							
-			
+				//- .card
+				//- 	.front
+				//- 	.back
+				//- 		span P 
+				
+		
 			.keyBase
-				.keyboard-row.row-1
-					#key-q.key
+				.keyboard-row
+					#key-q.key(key='q')
 						span Q
-					#key-w.key
+					#key-w.key(key='w')
 						span W
-					#key-e.key
+					#key-e.key(key='e')
 						span E
-					#key-r.key
+					#key-r.key(key='r')
 						span R
-					#key-t.key
+					#key-t.key(key='t')
 						span T
-					#key-y.key
+					#key-y.key(key='y')
 						span Y
-					#key-u.key
+					#key-u.key(key='u')
 						span U
-					#key-i.key
+					#key-i.key(key='i')
 						span I
-					#key-o.key
+					#key-o.key(key='o')
 						span O
-					#key-p.key
+					#key-p.key(key='p')
 						span P
 					
-				.keyboard-row.row-2
-					#key-a.key
+				.keyboard-row
+					#key-a.key(key='a')
 						span A
-					#key-s.key
+					#key-s.key(key='s')
 						span S
-					#key-d.key
+					#key-d.key(key='d')
 						span D
-					#key-f.key
+					#key-f.key(key='f')
 						span F
-					#key-g.key
+					#key-g.key(key='g')
 						span G
-					#key-h.key
+					#key-h.key(key='h')
 						span H
-					#key-j.key
+					#key-j.key(key='j')
 						span J
-					#key-k.key
+					#key-k.key(key='k')
 						span K
-					#key-l.key
+					#key-l.key(key='l')
 						span L
 					
-				.keyboard-row.row-e
-					#key-z.key
+				.keyboard-row
+					#key-z.key(key='z')
 						span Z
-					#key-x.key
+					#key-x.key(key='x')
 						span X
-					#key-c.key
+					#key-c.key(key='c')
 						span C
-					#key-v.key
+					#key-v.key(key='v')
 						span V
-					#key-b.key
+					#key-b.key(key='b')
 						span B
-					#key-n.key
+					#key-n.key(key='n')
 						span N
-					#key-m.key
+					#key-m.key(key='m')
 						span M
 					
 
@@ -97,4 +85,5 @@ block body
 		+footer 
 		
 block scripts
+	+scriptScripts('game2.js')
 	script(src="script.js")

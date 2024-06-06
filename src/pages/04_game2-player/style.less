@@ -16,7 +16,7 @@
 
     .gameBase{
         
-        .dica{
+        .tip{
             position: relative;
             width: 90em;
             margin-top: 8.4em;
@@ -39,14 +39,19 @@
                 position: relative;
                 font-size: 4.2em;
                 width: 17em;
+                margin-top: 0.5em;
             }
 
-            &.dica2 {
-                background-image: url("../../assets/img/game2/dica2.png");
+            &.tip2 {
+                .indice {
+                    background-image: url("../../assets/img/game2/dica2.png");
+                }
             }
 
-            &.dica3 {
-                background-image: url("../../assets/img/game2/dica2.png");
+            &.tip3 {
+                .indice {
+                    background-image: url("../../assets/img/game2/dica3.png");
+                };
             }
 
         }
@@ -76,6 +81,11 @@
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
+
+                    &.used{
+                        pointer-events: none;
+                        opacity: 0.2;
+                    }
     
                     &:hover {
                         background-color: #c6c5c5;
@@ -153,11 +163,11 @@
                 }
             }
         
-            &:hover .front {
+            &.correct .front {
                 transform: rotateY(-180deg);
             }
 
-            &:hover .back {
+            &.correct .back {
                 transform: rotateY(0deg);
             }
         }
