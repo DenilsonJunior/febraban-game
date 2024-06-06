@@ -59,7 +59,7 @@ $(document).ready(function () {
       tipCurrent += 1;
 
       $(".tip").css("opacity", "0");
-      $(".tip").css("margin-left", "8em");
+      // $(".tip").css("margin-left", "8em");
       $(".tip").animate({ opacity: 1, "margin-left": "0" }, 1000 * 0.4);
 
       if (tipCurrent == tipMax) {
