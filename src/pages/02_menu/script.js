@@ -1,6 +1,9 @@
-$(document).ready(function() {
-    $('.menu').on('click', function() {
-        scorm.saveObject('game', $(this).attr('game'));
-        navigate.next();
-    })
+$(document).ready(function () {
+  // localStorage.celar();
+  localStorage.clear();
+
+  $(".menu").on("click", function () {
+    localStorage.setItem("game", $(this).attr("game"));
+    navigate.next();
+  });
 });

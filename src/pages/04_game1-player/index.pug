@@ -16,12 +16,7 @@ block body
 					.back
 					.front(:style="{ backgroundImage: 'url(' + card.image + ')' }")
 
-			.splash(v-if="showSplash")
-				.overlay
-				.content
-					.title You won!
-					.score Score: {{ score }}
-					button.newGame(@click="resetGame()") New game
+			
 		
 		+footer
 		
