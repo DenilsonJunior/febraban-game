@@ -1,10 +1,12 @@
 const measures = {
   canvasW: 920,
-  canvasH: 1294,
+  canvasH: 915,
+  // canvasH: 1294,
 };
 
 const gameCurrent = 3;
-const timeGame = 60;
+// const timeGame = 60;
+const timeGame = 60000;
 
 $(document).ready(function () {
   gameWordSearch();
@@ -110,7 +112,8 @@ function gameWordSearch() {
     this.drawLineThickness = 26;
 
     //  A tint applied to the letters when a word is found
-    this.highlightTintContainer = ["#fe6b11", "#0bb7e1", "#578b20"];
+    // this.highlightTintContainer = ["#E90F6A", "#0bb7e1", "#D9F339"];
+    this.highlightTintContainer = ["#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339"];
     this.highlightTintIndice = 0;
     this.highlightTint = 0xffff00;
 
@@ -252,24 +255,56 @@ function gameWordSearch() {
       x = x_InitSolution;
       y = y_InitSolution;
 
-      this.solution.forEach(function (entry, indice) {
-        //  One BitmapText per word (so we can change their color when found)
-        var style = {
-          font: "32px Arial", ///Import: Usar sempre Arial para nao quebrar a font
-          fill: "0x000000",
-          align: "left",
-        };
+      // Palavras dicas
+      // this.solution.forEach(function (entry, indice) {
+      //   //  One BitmapText per word (so we can change their color when found)
+      //   var style = {
+      //     font: "30px Arial", ///Import: Usar sempre Arial para nao quebrar a font
+      //     fill: "0x000000",
+      //     align: "left",
+      //   };
 
-        x = indice < 5 ? x : x_SecondCol; /// Da quinta palavra já cria a segunda coluna
-        y = indice == 5 ? y_InitSolution : y;
+      //   x = indice < 5 ? x : x_SecondCol; /// Da quinta palavra já cria a segunda coluna
+      //   y = indice == 5 ? y_InitSolution : y;
 
-        var _palavras = _this.add.text(x, y, _this.wordsBase[indice], style);
-        _palavras.fontWeight = "bold";
+      //   var _palavras = _this.add.text(x, y, _this.wordsBase[indice], style);
+      //   _palavras.fontWeight = "bold";
 
-        _this.wordList[entry.word] = _palavras;
+      //   _this.wordList[entry.word] = _palavras;
 
-        y += 42;
-      });
+      //   y += 42;
+      // });
+
+      // Verifique se a lista de palavras existe no DOM
+      const listContainer = document.querySelector('ul.listPalavras');
+
+      // Se a lista de palavras existir no DOM
+      if (listContainer) {
+          // Iterar sobre cada entrada na solução
+          this.solution.forEach((entry, indice) => {    
+              // Criar um elemento <li> para representar a palavra
+              const li = document.createElement('li');
+              li.textContent = this.wordsBase[indice];
+
+              // Adicionar o elemento <li> à lista de palavras
+              listContainer.appendChild(li);
+
+              // Armazenar uma referência ao elemento de texto criado para a palavra correspondente
+              this.wordList[entry.word] = li;
+
+              // Adicionar uma classe CSS para estilizar a palavra
+              li.classList.add('word');
+
+              // Adicionar um evento de clique para marcar a palavra como visitada
+              li.addEventListener('click', () => {
+                  // Marcar a palavra como visitada adicionando uma classe CSS
+                  li.classList.add('visited');
+              });
+          });
+      } else {
+          // Se a lista de palavras não existir no DOM, exibir um erro no console
+          console.error("A lista de palavras (ul.listPalavras) não foi encontrada no DOM.");
+      }
 
       //  The Graphics object that controls the letter selection line
 
@@ -375,9 +410,18 @@ function gameWordSearch() {
       countWord(1);
 
       //  result contains the sprites of the letters, the word, etc.
-
       var tinta = this.highlightTintContainer[this.highlightTintIndice];
       this.wordList[result.word].fill = tinta;
+
+      var element = this.wordList[result.word];
+
+      // Verifica se o elemento foi encontrado
+      if (element) {
+          // Adiciona a classe 'visited' ao elemento
+          element.classList.add('visited');
+      } else {
+          console.error('Elemento não encontrado para a palavra-chave:', result.word);
+      }
 
       result.letters.forEach(function (letter) {
         letter.tint = tinta.replace("#", "0x");

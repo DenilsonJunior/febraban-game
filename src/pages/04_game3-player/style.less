@@ -5,6 +5,27 @@
     background-color: @color-03;
     position: relative;
 
+    .listPalavras {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding: 0;
+        li {
+            width: 46.1%;
+            background-color: @color-white;
+            font-size: 3em;
+            padding: 0.5em;
+            display: flex;
+            justify-content: center;
+            color: @color-black;
+            font-weight: 700;
+            &.visited {
+                background-color: @color-02;
+            }
+        }
+    }
+
     footer {
         &::before {
             background-color: @color-02;

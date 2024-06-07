@@ -127,7 +127,7 @@ function initAA15() {
     },
 
     create: function () {
-      this.stage.backgroundColor = "#8a8d8e";
+      this.stage.backgroundColor = "#E90F6A";
       this.add.tileSprite(0, 0, 1366, 768, "background");
 
       //this.stage.backgroundColor = 'rgba(68, 136, 170, 0.5)'
