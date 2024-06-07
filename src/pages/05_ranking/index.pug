@@ -14,7 +14,7 @@ block body
 			.ranking
 				h2 Ranking
 				.boxRanking
-					.rankingScore
+					button.rankingScore(data-modal="#pop1")
 						p.nome Nome 1
 						p -
 						p.score 100 pontos
@@ -29,6 +29,31 @@ block body
 				+image('qrcode.jpg', 'qr')
 
 		+footer
+
+		.modal#pop1
+			.box
+				button.modal-close
+					p X
+				.topo
+					h2 pontuação
+				h3.nome Nome 1
+				.flexBox
+					h4 Jogo da Memória
+					p -
+					p.pontos 10
+				.flexBox
+					h4 Qual é a Certificação
+					p -
+					p.pontos 20
+				.flexBox
+					h4 Caça Palavras
+					p -
+					p.pontos 10
+				.flexBox
+					h4 Total
+					p -
+					p.totalPontos
+
 		
 block scripts
 	script(src="script.js")

@@ -99,3 +99,80 @@
         }
     }
 }
+
+.modal {
+    .box {
+        background-color: @color-white;
+        width: 64em;
+        border-radius: .5em;
+        padding: 8em 4em;
+        border-bottom: .4em solid @color-black;
+        position: relative;
+        overflow: hidden;
+        .modal-close {
+            position: absolute;
+            right: 2em;
+            top: 2em;
+            background-color: transparent;
+            border: solid .4em @color-white;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4em;
+            height: 4em;
+            p {
+                color: @color-white;
+                margin: .15em 0 0;
+                font-weight: 700;
+                font-size: 2.5em;
+            }
+        }
+        .topo {
+            background-image: url(../../assets/img/topogame.jpg);
+            background-size: cover;
+            background-position: center;
+            background-color: @color-black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8em;
+            padding: 4em;
+            display: flex;
+            align-items: center;
+            h2 {
+                color: @color-01;
+                font-size: 5em;
+                text-transform: uppercase;
+                margin: 0;
+                font-weight: 600;
+            }
+        }
+        .nome {
+            font-size: 4em;
+            color: @color-black;
+            margin: 3em 0 1em;
+        }
+        .flexBox {
+            display: flex;
+            gap: 2em;
+            h4 {
+                font-size: 3em;
+                margin: 0;
+                font-weight: 600;
+                color: @color-01;
+            }
+            p {
+                font-size: 3em;
+                margin: 0;
+                color: @color-black;
+            }
+        }
+        .flexBox + .flexBox {
+            border-top: .4em solid @color-02;
+            margin: 1em 0 0;
+            padding: 1em 0 0;
+        }
+    }
+}
