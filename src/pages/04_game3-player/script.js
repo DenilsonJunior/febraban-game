@@ -1,12 +1,12 @@
 const measures = {
   canvasW: 920,
-  canvasH: 915,
+  canvasH: 910,
   // canvasH: 1294,
 };
 
 const gameCurrent = 3;
 // const timeGame = 60;
-const timeGame = 60000;
+const timeGame = 60;
 
 $(document).ready(function () {
   gameWordSearch();
