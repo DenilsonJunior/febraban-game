@@ -1,31 +1,6 @@
-const measures = {
-  canvasW: 920,
-  canvasH: 1294,
-};
+initAA15();
 
-const gameCurrent = 3;
-const timeGame = 60;
-
-$(document).ready(function () {
-  gameWordSearch();
-});
-
-function countWord(word) {
-  $("body").trigger("game", [gameCurrent, word]);
-}
-
-function activeTime() {
-  countdownTimer(timeGame);
-}
-
-function completeWord() {
-  setTimeout(function () {
-    navigate.goto(`05_ranking`);
-  }, 1000 * 1);
-}
-
-function gameWordSearch() {
-  $(".info .value").text("01:00");
+function initAA15() {
   var WordSearch = {};
 
   WordSearch.Game = function (game) {
@@ -36,18 +11,7 @@ function gameWordSearch() {
 
     var _this = this;
     this.words = [];
-    this.wordsBase = [
-      "Compliance",
-      "Crédito",
-      "ESG",
-      "LGPD",
-      "SAC",
-      "PLDFT",
-      "Libras",
-      "Sustentabilidade",
-      "Preparatório",
-      "Correspondentes",
-    ];
+    this.wordsBase = ["Empatia", "União", "Colaboração"];
 
     //this.wordsBase = ['Colaboração', 'Proximidade'];
 
@@ -84,8 +48,6 @@ function gameWordSearch() {
       "Z",
       "Ç",
       "Ã",
-      "É",
-      "Ó",
     ];
 
     this.puzzle = null;
@@ -131,15 +93,17 @@ function gameWordSearch() {
 
       this.load.bitmapFont("azo");
 
+      this.load.spritesheet("limpar", "limpar.png", 200, 41);
+      this.load.spritesheet("menu", "menu.png", 200, 41);
+
       var _this = this;
+      window["aa15"].game = _this;
 
       this.letters.forEach(function (letter) {
         var nameIMG = letter;
 
         if (letter == "Ã") nameIMG = "A1";
         else if (letter == "Ç") nameIMG = "C1";
-        else if (letter == "É") nameIMG = "E1";
-        else if (letter == "Ó") nameIMG = "O1";
 
         _this.load.spritesheet(
           letter.toLowerCase(),
@@ -148,6 +112,8 @@ function gameWordSearch() {
           _this.tileHeight
         );
       });
+
+      this.load.image("background", "bg.png");
 
       this.scaleRatio = window.devicePixelRatio / 3;
 
@@ -161,9 +127,11 @@ function gameWordSearch() {
     },
 
     create: function () {
-      this.stage.backgroundColor = "#ffffff";
+      this.stage.backgroundColor = "#8a8d8e";
+      this.add.tileSprite(0, 0, 1366, 768, "background");
 
-      activeTime();
+      //this.stage.backgroundColor = 'rgba(68, 136, 170, 0.5)'
+      //  Generate a new Word Search puzzle, and store the size of it.
 
       if (this.puzzleWidth !== -1) {
         this.puzzle = wordfind.newPuzzle(this.words, {
@@ -175,6 +143,20 @@ function gameWordSearch() {
         this.puzzleWidth = this.puzzle[0].length;
         this.puzzleHeight = this.puzzle.length;
       }
+
+      var limpar = this.add.button(
+        75,
+        620,
+        "limpar",
+        this.limparEvent,
+        this,
+        2,
+        1,
+        0
+      );
+      //var menu = this.add.button(305, 620, 'menu', this.menuEvent, this, 2, 1, 0);
+
+      //  Solve the puzzle (i.e. find all of the words within it, and store it)
 
       var solution = wordfind.solve(this.puzzle, this.words);
 
@@ -231,6 +213,24 @@ function gameWordSearch() {
         };
       });
 
+      //Titulo
+      var graphics = this.add.graphics(0, 0);
+      graphics.lineStyle(2, 0xfe6b11, 1);
+      graphics.beginFill(0xfe6b11, 0.0);
+      graphics.drawRect(80, 50, 1200, 100);
+
+      var tituloTXT =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n Caça-Palavras:";
+
+      var style = {
+        font: "20px Arial",
+        fill: "#000",
+        align: "left",
+      };
+
+      var _palavras = _this.add.text(95, 60, tituloTXT, style);
+      _palavras.fontWeight = "bold";
+
       //  This controls the position and scale of the word search grid
       //  Setting the width / height automatically scales the Group
       //  If you remove this, the tiles will be displayed at their full size
@@ -238,30 +238,23 @@ function gameWordSearch() {
       //  Use it to position the grid within your game, and make sure it fits
       //  no matter how many words are in it.
 
-      this.grid.x = 45;
-      this.grid.y = 45;
-      this.grid.width = 827;
-      this.grid.height = 816;
+      this.grid.x = 650;
+      this.grid.y = 160;
+      this.grid.width = 500;
+      this.grid.height = 500;
 
       //  Display the words to find down the right-hand side, and add to the wordList object
 
-      var x_InitSolution = 40;
-      var y_InitSolution = 880;
-      var x_SecondCol = 400;
-
-      x = x_InitSolution;
-      y = y_InitSolution;
+      x = 200;
+      y = 200;
 
       this.solution.forEach(function (entry, indice) {
         //  One BitmapText per word (so we can change their color when found)
         var style = {
-          font: "32px Arial", ///Import: Usar sempre Arial para nao quebrar a font
+          font: "32px Arial",
           fill: "0x000000",
           align: "left",
         };
-
-        x = indice < 5 ? x : x_SecondCol; /// Da quinta palavra já cria a segunda coluna
-        y = indice == 5 ? y_InitSolution : y;
 
         var _palavras = _this.add.text(x, y, _this.wordsBase[indice], style);
         _palavras.fontWeight = "bold";
@@ -281,6 +274,11 @@ function gameWordSearch() {
 
       this.input.addMoveCallback(this.updateDrawLine, this);
     },
+
+    limparEvent: function () {
+      this.state.restart();
+    },
+    menuEvent: function () {},
 
     /**
      * Draws the selection line, showing which letter tiles are being selected.
@@ -372,8 +370,6 @@ function gameWordSearch() {
     highlightCorrectWord: function (result) {
       var _this = this;
 
-      countWord(1);
-
       //  result contains the sprites of the letters, the word, etc.
 
       var tinta = this.highlightTintContainer[this.highlightTintIndice];
@@ -424,7 +420,11 @@ function gameWordSearch() {
      * Called once all words have been found.
      */
     gameWon: function (_containerTela) {
-      completeWord();
+      //  They've matched every word!
+      ///Completo
+      //$(".containerAA15").find(".cd-section").css("display", "block");
+      // course.gameComplete(3);
+      alert("Complete");
     },
 
     //  From this point on, all of the functions deal with checking the letters,
@@ -584,13 +584,13 @@ function gameWordSearch() {
         á: "a",
         Á: "A",
         /*"ã": "a",
-        "Ã": "A",*/
+                    "Ã": "A",*/
         ê: "e",
         Ê: "E",
         è: "e",
         È: "E",
-        // é: "e",
-        // É: "E",
+        é: "e",
+        É: "E",
         î: "i",
         Î: "I",
         ì: "i",
@@ -602,8 +602,8 @@ function gameWordSearch() {
         ô: "o",
         Ô: "O",
         ò: "o",
-        // Ò: "O",
-        // ó: "o",
+        Ò: "O",
+        ó: "o",
         Ó: "O",
         ü: "u",
         Ü: "U",
@@ -614,7 +614,7 @@ function gameWordSearch() {
         ù: "u",
         Ù: "U",
         /*"ç": "c",
-        "Ç": "C"*/
+                    "Ç": "C"*/
       };
 
       return s.replace(/[\W\[\] ]/g, function (a) {
@@ -625,11 +625,7 @@ function gameWordSearch() {
 
   //  Creates the game instance and starts it running
 
-  var game = new Phaser.Game(
-    measures.canvasW,
-    measures.canvasH,
-    Phaser.CANVAS,
-    "game"
-  );
+  var game = new Phaser.Game(1366, 768, Phaser.CANVAS, "gameAA15");
+  //var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'gameAA15');
   game.state.add("WordSearch.Game", WordSearch.Game, true);
 }

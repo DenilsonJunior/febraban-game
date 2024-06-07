@@ -8,14 +8,14 @@ block body
 		+header
 		+topgame('Caça Palavras')
 		
-		.cacapalavras
-			<div id="canvasContainer">
-				<canvas id="canvas"></canvas>
-			</div>
-			<ul id="list"></ul>
+		.containerParent
+			#game
 
 		+footer
 
 		
 block scripts
+	+scriptScripts('countdownTimer.js')
+	+scriptScripts('phaser.min.js')
+	+scriptScripts('wordfind.js')
 	script(src="script.js")
