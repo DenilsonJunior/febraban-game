@@ -6,7 +6,7 @@ const measures = {
 
 const gameCurrent = 3;
 // const timeGame = 60;
-const timeGame = 60;
+const timeGame = 60 * 8; ///60
 
 $(document).ready(function () {
   gameWordSearch();
@@ -113,7 +113,18 @@ function gameWordSearch() {
 
     //  A tint applied to the letters when a word is found
     // this.highlightTintContainer = ["#E90F6A", "#0bb7e1", "#D9F339"];
-    this.highlightTintContainer = ["#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339", "#D9F339"];
+    this.highlightTintContainer = [
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+      "#D9F339",
+    ];
     this.highlightTintIndice = 0;
     this.highlightTint = 0xffff00;
 
@@ -276,34 +287,36 @@ function gameWordSearch() {
       // });
 
       // Verifique se a lista de palavras existe no DOM
-      const listContainer = document.querySelector('ul.listPalavras');
+      const listContainer = document.querySelector("ul.listPalavras");
 
       // Se a lista de palavras existir no DOM
       if (listContainer) {
-          // Iterar sobre cada entrada na solução
-          this.solution.forEach((entry, indice) => {    
-              // Criar um elemento <li> para representar a palavra
-              const li = document.createElement('li');
-              li.textContent = this.wordsBase[indice];
+        // Iterar sobre cada entrada na solução
+        this.solution.forEach((entry, indice) => {
+          // Criar um elemento <li> para representar a palavra
+          const li = document.createElement("li");
+          li.textContent = this.wordsBase[indice];
 
-              // Adicionar o elemento <li> à lista de palavras
-              listContainer.appendChild(li);
+          // Adicionar o elemento <li> à lista de palavras
+          listContainer.appendChild(li);
 
-              // Armazenar uma referência ao elemento de texto criado para a palavra correspondente
-              this.wordList[entry.word] = li;
+          // Armazenar uma referência ao elemento de texto criado para a palavra correspondente
+          this.wordList[entry.word] = li;
 
-              // Adicionar uma classe CSS para estilizar a palavra
-              li.classList.add('word');
+          // Adicionar uma classe CSS para estilizar a palavra
+          li.classList.add("word");
 
-              // Adicionar um evento de clique para marcar a palavra como visitada
-              li.addEventListener('click', () => {
-                  // Marcar a palavra como visitada adicionando uma classe CSS
-                  li.classList.add('visited');
-              });
+          // Adicionar um evento de clique para marcar a palavra como visitada
+          li.addEventListener("click", () => {
+            // Marcar a palavra como visitada adicionando uma classe CSS
+            li.classList.add("visited");
           });
+        });
       } else {
-          // Se a lista de palavras não existir no DOM, exibir um erro no console
-          console.error("A lista de palavras (ul.listPalavras) não foi encontrada no DOM.");
+        // Se a lista de palavras não existir no DOM, exibir um erro no console
+        console.error(
+          "A lista de palavras (ul.listPalavras) não foi encontrada no DOM."
+        );
       }
 
       //  The Graphics object that controls the letter selection line
@@ -417,10 +430,13 @@ function gameWordSearch() {
 
       // Verifica se o elemento foi encontrado
       if (element) {
-          // Adiciona a classe 'visited' ao elemento
-          element.classList.add('visited');
+        // Adiciona a classe 'visited' ao elemento
+        element.classList.add("visited");
       } else {
-          console.error('Elemento não encontrado para a palavra-chave:', result.word);
+        console.error(
+          "Elemento não encontrado para a palavra-chave:",
+          result.word
+        );
       }
 
       result.letters.forEach(function (letter) {
