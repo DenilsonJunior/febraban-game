@@ -1,28 +1,42 @@
 const measures = {
   canvasW: 920,
   canvasH: 910,
-  // canvasH: 1294,
 };
 
 const gameCurrent = 3;
-// const timeGame = 60;
-const timeGame = 60 * 8; ///60
+const timeGame = 60 * 1; ///60
+let workAll = 0;
+const pointMulti = 10;
+const definedWords = [
+  "Compliance",
+  "Crédito",
+  "ESG",
+  "LGPD",
+  "SAC",
+  "PLDFT",
+  "Libras",
+  "Sustentabilidade",
+  "Preparatório",
+  "Correspondentes",
+];
 
 $(document).ready(function () {
   gameWordSearch();
 });
 
 function countWord(word) {
-  $("body").trigger("game", [gameCurrent, word]);
+  workAll += word;
 }
 
 function activeTime() {
-  countdownTimer(timeGame);
+  countdownTimer(timeGame, () => {
+    $("body").trigger("game", [gameCurrent, workAll * pointMulti]);
+  });
 }
 
 function completeWord() {
   setTimeout(function () {
-    navigate.goto(`05_ranking`);
+    $("body").trigger("game", [gameCurrent, workAll * pointMulti]);
   }, 1000 * 1);
 }
 
@@ -38,18 +52,7 @@ function gameWordSearch() {
 
     var _this = this;
     this.words = [];
-    this.wordsBase = [
-      "Compliance",
-      "Crédito",
-      "ESG",
-      "LGPD",
-      "SAC",
-      "PLDFT",
-      "Libras",
-      "Sustentabilidade",
-      "Preparatório",
-      "Correspondentes",
-    ];
+    this.wordsBase = definedWords;
 
     //this.wordsBase = ['Colaboração', 'Proximidade'];
 

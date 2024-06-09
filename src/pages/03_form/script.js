@@ -4,7 +4,7 @@ $(document).ready(function () {
   $(".cadastro").on("click", function () {
     var name = $("#name").val();
     var email = $("#email").val();
-    var empresa = $("#empresa").val();
+    var empresa = $("#empresa").val() || "não defina";
 
     $(".alertName").css("display", "none");
     $(".alertMail").css("display", "none");
@@ -18,13 +18,20 @@ $(document).ready(function () {
       return false;
     }
 
-    const dados = {
+    var informativo = $("#informativo").is(":checked");
+
+    var data = {
       name: name,
-      emal: email,
+      email: email,
       empresa: empresa,
+      informativo: informativo,
     };
 
-    $("body").trigger("cadastro", [dados]);
+    //localstorage
+    $("body").trigger("setOrUpdateObject", ["user", data]);
+    //firebase
+    bridge.handlerFormDB(data);
+
     setTimeout(() => {
       navigate.goto(`04_game${game}-intro`);
     }, 1000 * 0.12);

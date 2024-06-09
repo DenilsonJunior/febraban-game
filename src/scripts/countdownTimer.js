@@ -1,4 +1,4 @@
-var countdownTimer = function (duration) {
+var countdownTimer = function (duration, call) {
   let timer = duration,
     minutes,
     seconds;
@@ -16,7 +16,7 @@ var countdownTimer = function (duration) {
       this.time = "00:00";
       $(".info .value").text("00:00");
       // alert("Tempo esgotado!");
-      navigate.goto(`05_ranking`);
+      call();
     }
   }, 1000);
 };

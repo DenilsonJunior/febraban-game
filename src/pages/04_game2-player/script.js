@@ -12,21 +12,28 @@ $(document).ready(function () {
   var tipMax = 3;
   var tipCurrent = 0;
   var wordCalc = 0;
+  var keyAll = 0;
+  var pointMulti = 10;
 
   $(".info .value").text(`00:${timePosTip}`);
 
   function countWord(keys) {
-    $("body").trigger("game", [gameCurrent, keys]);
+    keyAll += keys;
+    // $("body").trigger("game", [gameCurrent, keys]);
   }
 
   function activeTime() {
-    countdownTimer(timePosTip);
+    countdownTimer(timePosTip, () => {
+      completeWord();
+    });
   }
 
   function completeWord() {
     setTimeout(function () {
-      navigate.goto(`05_ranking`);
-    }, 1000 * 1);
+      console.log(gameCurrent, keyAll * pointMulti);
+      $("body").trigger("game", [gameCurrent, keyAll * pointMulti]);
+      // navigate.goto(`05_ranking`);
+    }, 1000 * 0.5);
   }
 
   function tip() {

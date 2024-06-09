@@ -72,8 +72,14 @@ function addOrUpdateDocument(docRef, data) {
       .get()
       .then((doc) => {
         if (doc.exists) {
+          console.log("update", docRef);
           docRef
-            .update(data)
+            .update({
+              name: data.name,
+              email: data.email,
+              empresa: data.empresa,
+              informativo: data.informativo,
+            })
             .then(() => {
               console.log("Document successfully update!");
             })
@@ -81,8 +87,14 @@ function addOrUpdateDocument(docRef, data) {
               console.error("Error update: ", error);
             });
         } else {
+          console.log("set", docRef);
           docRef
-            .set(data)
+            .set({
+              name: data.name,
+              email: data.email,
+              empresa: data.empresa,
+              informativo: data.informativo,
+            })
             .then(() => {
               console.log("Document successfully written!");
             })
@@ -102,45 +114,10 @@ function addOrUpdateDocument(docRef, data) {
 window.initFirebase = false;
 $(document).ready(function () {
   if (!window.initFirebase) {
-    const collection = "usuarios";
     const firebaseApp = firebase.initializeApp(window.firebaseConfig);
     window.db = firebaseApp.firestore();
-    window.collectionDB = window.db.collection(collection);
+    window.collectionDB = window.db.collection("usuarios");
     window.initFirebase = true;
-
-    // const _nome = "Nilo";
-    // const _email = "tesaaate@nilo.ar";
-    // const _empresa = "nil S.A";
-    // const _autorizacao = true;
-
-    // const data = {
-    //   nome: _nome,
-    //   email: _email,
-    //   empresa: _empresa,
-    //   autorizacao: _autorizacao,
-    // };
-    // const fieldName = "game3";
-    // const newValue = 810;
-
-    // const docRef = collectionDB.doc(_email);
-
-    //Fomulário
-    // addOrUpdateDocument(docRef, data);
-
-    //Nota game
-    // updateIfGreater(window.db, docRef, fieldName, newValue);
-
-    ///listagem Ranking
-    // getDocumentsOrderedByField(collectionDB, "maior")
-    //   .then((results) => {
-    //     console.log("Documents ordered by field in descending order:");
-    //     results.forEach((doc) => {
-    //       console.log(`Document ID: ${doc.id}, Data:`, doc.data);
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error in getDocumentsOrderedByField: ", error);
-    //   });
   }
 });
 
