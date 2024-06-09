@@ -5,20 +5,29 @@ block styles
 
 block body
 	.body
+	    
+		.preloader 
+			.lds-eclipse
+				.spinner
+				.spinner.reverse
+
 		+header
 
-		+image('rak.jpg', 'imgTop')
+		+image('topogame.jpg', 'imgTop')
+		h2.titleRanking Ranking
 
 		section.sec1
-			p Você conquistou <b>[<span class='score'>X</span> pontos]</b> ao explorar as experiências educacionais oferecidas pela Febraban Educação. Confira a sua colocação no nosso ranking!
+			p Você conquistou <b>[<span class='currentScore'>0</span> pontos]</b> ao explorar as experiências educacionais oferecidas pela Febraban Educação. Confira a sua colocação no nosso ranking!
 			.ranking
-				h2 Ranking
+				
 				.boxRanking
-					button.rankingScore(data-modal="#pop1")
-						p.nome Nome 1
-						p -
-						p.score 100 pontos
-		
+					button.rankingScore.hide(data-modal="#pop1")
+						div.datBase
+							p.nome Nome 1
+							p -
+							p.score 100 pontos
+						div.ico
+								
 		section.sec2
 			h2 Temos muito mais para você! 
 			p Continue explorando, aprendendo e se envolvendo com as iniciativas educacionais da Febraban. Acesse o nosso site febrabaneducacao.com.br para conhecer as nossas soluções de aprendizagem.
@@ -32,27 +41,28 @@ block body
 
 		.modal#pop1
 			.box
-				button.modal-close
-					p X
+				
 				.topo
 					h2 pontuação
-				h3.nome Nome 1
-				.flexBox
-					h4 Jogo da Memória
-					p -
-					p.pontos 10
-				.flexBox
-					h4 Qual é a Certificação
-					p -
-					p.pontos 20
-				.flexBox
-					h4 Caça Palavras
-					p -
-					p.pontos 10
-				.flexBox
-					h4 Total
-					p -
-					p.totalPontos
+					button.modal-close
+				.containerBox
+					h3.nome Nome 
+					.flexBox
+						h4 Jogo da Memória
+						p.pontos.game1 0
+					.flexBox
+						h4 Qual é a Certificação
+						p.pontos.game2 0
+					.flexBox
+						h4 Caça Palavras
+						p.pontos.game3 0
+					.flexBox.info 
+						p * A nota do ranking sempre será a maior pontuação obtida pelo jogador em todos os jogos que ele realizou.
+					
+				//- .flexBox
+				//- 	h4 Total
+				//- 	p -
+				//- 	p.totalPontos
 
 		
 block scripts

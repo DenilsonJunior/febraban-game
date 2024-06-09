@@ -9,6 +9,16 @@
         width: 100%;
     }
 
+    .titleRanking{
+        position: absolute;
+        top: 3.2em;
+        font-size: 7em;
+        left: 2.6em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: @color-02;
+    }
+
     .sec1 {
         background-color: @color-03;
         padding: 4em 18em 0;
@@ -19,6 +29,10 @@
         p {
             font-size: 3em;
             margin: 0;
+
+            b{
+                font-weight: 700;
+            }
         }
 
         .ranking {
@@ -44,11 +58,55 @@
                 max-height: 47.5em;
                 overflow: auto;
                 .rankingScore {
+                    position: relative;
                     background-color: @color-03;
                     padding: .4em 2em;
                     display: flex;
+                    cursor: pointer;
                     gap: 1em;
                     border-left: .5em solid @color-04;
+                    justify-content: space-between;
+                    align-items: center;
+                    &[item="0"] {
+                        background-color: rgba(217, 243, 57, 0.9);
+                    }
+                    &[item="1"] {
+                        background-color: rgba(217, 243, 57, 0.6);
+                    }
+                    &[item="2"] {
+                        background-color: rgba(217, 243, 57, 0.3);
+                    }
+                    
+                    .datBase{
+                        position: relative;
+                        display: flex;
+                        gap: 1em;
+                        flex: 1;
+                        
+                        
+
+                        .number{
+                            font-weight: 600;
+                        }
+                        .nome{
+                            text-overflow: ellipsis;
+                            width: 12em;
+                            text-align: left;
+                            text-wrap: nowrap;
+                            overflow: hidden;
+                        }
+                        .point{
+                            font-weight: 600;
+                        }
+                    }
+                    .ico{
+                        position: relative;
+                        height: 3rem;
+                        width: 3rem;
+                        background-image: url(../../assets/img/info.svg);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
                 }
 
                 &::-webkit-scrollbar {
@@ -98,63 +156,108 @@
             background-color: @color-02;
         }
     }
+
+    .preloader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99999;
+        backdrop-filter: blur(4px);
+
+        .lds-eclipse {
+            position: relative;
+            width: 20em !important;
+            height: 20em !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            .spinner {
+                position: absolute;
+                animation: lds-eclipse 1s linear infinite;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                box-shadow: 0 1px 0 0 #fff;
+               
+                &.reverse {
+                    animation: lds-eclipse 1s linear infinite;
+                    animation-direction: reverse;
+                    width: 80%;
+                    height: 80%;
+                    box-shadow: 0 1px 0 0 #fff;
+                }
+            }
+    
+        }
+
+    }
 }
 
 .modal {
     .box {
         background-color: @color-white;
         width: 64em;
-        border-radius: .5em;
-        padding: 8em 4em;
+        border-radius: 0;
+        padding: 0;
         border-bottom: .4em solid @color-black;
         position: relative;
         overflow: hidden;
-        .modal-close {
-            position: absolute;
-            right: 2em;
-            top: 2em;
-            background-color: transparent;
-            border: solid .4em @color-white;
-            border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 4em;
-            height: 4em;
-            p {
-                color: @color-white;
-                margin: .15em 0 0;
-                font-weight: 700;
-                font-size: 2.5em;
-            }
-        }
-        .topo {
-            background-size: cover;
-            background-position: right;
-            background-color: @color-black;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8em;
+
+        .containerBox{
+            position: relative;
             padding: 4em;
+        }
+        
+        .topo {
+            background-color: @color-black;
+            position: relative;
+            width: initial;
+            height: 4em;
+            padding: 2em 4em;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             h2 {
-                color: @color-01;
-                font-size: 5em;
+                color: @color-02;
+                font-size: 3em;
                 text-transform: uppercase;
                 margin: 0;
                 font-weight: 600;
             }
+
+            .modal-close {
+                position: relative;
+                background-color: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 4em;
+                height: 4em;
+                top: 0;
+                cursor: pointer;
+                
+                background-image: url(../../assets/img/close.svg);
+                background-size:contain;
+                background-repeat: no-repeat;
+            }
         }
         .nome {
-            font-size: 4em;
+            font-size: 3em;
             color: @color-black;
-            margin: 3em 0 1em;
+            line-height: 1;
+            margin-top: 0;
         }
         .flexBox {
             display: flex;
+            justify-content: space-between;
             gap: 2em;
             h4 {
                 font-size: 3em;
@@ -167,11 +270,38 @@
                 margin: 0;
                 color: @color-black;
             }
+
+            &.info{
+                position: relative;
+                padding-top: 6em !important;
+
+                p{
+                    font-size: 2em;
+                }
+                
+            }
         }
         .flexBox + .flexBox {
             border-top: .4em solid @color-02;
             margin: 1em 0 0;
             padding: 1em 0 0;
         }
+    }
+}
+
+@keyframes lds-eclipse {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }

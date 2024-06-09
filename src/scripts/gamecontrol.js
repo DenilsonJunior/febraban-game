@@ -27,10 +27,6 @@ $(document).ready(function () {
     checkAndSaveOrUpdateObject(storageKey, newData);
   });
 
-  $("body").on("getObject", function (e, key) {
-    getObjectFromLocalStorage(key);
-  });
-
   $("body").on("game", function (e, game, point) {
     const user = getObjectFromLocalStorage("user");
     const gameName = "game" + game;
