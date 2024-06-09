@@ -102,10 +102,7 @@ function addOrUpdateDocument(docRef, data) {
 window.initFirebase = false;
 $(document).ready(function () {
   if (!window.initFirebase) {
-    ///inicializar
-
     const collection = "usuarios";
-
     const firebaseApp = firebase.initializeApp(window.firebaseConfig);
     window.db = firebaseApp.firestore();
     window.collectionDB = window.db.collection(collection);
@@ -134,16 +131,16 @@ $(document).ready(function () {
     // updateIfGreater(window.db, docRef, fieldName, newValue);
 
     ///listagem Ranking
-    getDocumentsOrderedByField(collectionDB, "maior")
-      .then((results) => {
-        console.log("Documents ordered by field in descending order:");
-        results.forEach((doc) => {
-          console.log(`Document ID: ${doc.id}, Data:`, doc.data);
-        });
-      })
-      .catch((error) => {
-        console.error("Error in getDocumentsOrderedByField: ", error);
-      });
+    // getDocumentsOrderedByField(collectionDB, "maior")
+    //   .then((results) => {
+    //     console.log("Documents ordered by field in descending order:");
+    //     results.forEach((doc) => {
+    //       console.log(`Document ID: ${doc.id}, Data:`, doc.data);
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error in getDocumentsOrderedByField: ", error);
+    //   });
   }
 });
 
