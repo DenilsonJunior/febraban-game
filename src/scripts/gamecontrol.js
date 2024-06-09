@@ -14,14 +14,16 @@ function checkAndSaveOrUpdateObject(storageKey, newData) {
   localStorage.setItem(storageKey, jsonString);
 }
 
+function fullscreen() {
+  $(".fullscreen").on("click", function () {
+    bridge.fullScreen();
+  });
+}
+
 $(document).ready(function () {
   fullscreen();
 
-  function fullscreen() {
-    $(".fullscreen").on("click", function () {
-      bridge.fullScreen();
-    });
-  }
+  // navigate.goto(`01_capa`); /// sempre abre o curso na capa
 
   $("body").on("setOrUpdateObject", function (e, storageKey, newData) {
     checkAndSaveOrUpdateObject(storageKey, newData);
