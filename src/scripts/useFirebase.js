@@ -9,15 +9,70 @@ window.firebaseConfig = {
   measurementId: "G-1NV8HNSJZJ",
 };
 
-function addOrUpdateDocument(db, collectionName, docId, data) {
+async function getDocumentsOrderedByField(collectionDB, fieldName) {
   try {
-    db.collection(collectionName)
-      .doc(docId)
+    const querySnapshot = await collectionDB.orderBy(fieldName, "desc").get();
+
+    if (querySnapshot.empty) {
+      console.log("No matching documents.");
+      return [];
+    }
+
+    let results = [];
+    querySnapshot.forEach((doc) => {
+      results.push({
+        id: doc.id,
+        data: doc.data(),
+      });
+    });
+
+    return results;
+  } catch (error) {
+    console.error("Error retrieving documents: ", error);
+    return [];
+  }
+}
+
+async function updateIfGreater(db, docRef, fieldName, newValue) {
+  try {
+    await db.runTransaction(async (transaction) => {
+      const doc = await transaction.get(docRef);
+      if (!doc.exists) {
+        throw new Error("Document does not exist!");
+      }
+
+      const game1 = doc.data()["game1"] || 0;
+      const game2 = doc.data()["game2"] || 0;
+      const game3 = doc.data()["game3"] || 0;
+      const games = [game1, game2, game3];
+      games.sort(function (a, b) {
+        return b - a;
+      });
+
+      const currentValue = doc.data()[fieldName] || 0;
+
+      if (newValue > currentValue) {
+        transaction.update(docRef, {
+          [fieldName]: newValue,
+          maior: newValue > games[0] ? newValue : games[0],
+        });
+        console.log("Field updated because the new value is greater.");
+      } else {
+        console.log("Field not updated because the new value is not greater.");
+      }
+    });
+  } catch (error) {
+    console.error("Transaction failed: ", error);
+  }
+}
+
+function addOrUpdateDocument(docRef, data) {
+  try {
+    docRef
       .get()
       .then((doc) => {
         if (doc.exists) {
-          db.collection(collectionName)
-            .doc(docId)
+          docRef
             .update(data)
             .then(() => {
               console.log("Document successfully update!");
@@ -26,8 +81,7 @@ function addOrUpdateDocument(db, collectionName, docId, data) {
               console.error("Error update: ", error);
             });
         } else {
-          db.collection(collectionName)
-            .doc(docId)
+          docRef
             .set(data)
             .then(() => {
               console.log("Document successfully written!");
@@ -50,25 +104,72 @@ $(document).ready(function () {
   if (!window.initFirebase) {
     ///inicializar
 
-    const firebaseApp = firebase.initializeApp(window.firebaseConfig);
-    const db = firebaseApp.firestore();
+    const collection = "usuarios";
 
-    console.log(db);
+    const firebaseApp = firebase.initializeApp(window.firebaseConfig);
+    window.db = firebaseApp.firestore();
+    window.collectionDB = window.db.collection(collection);
     window.initFirebase = true;
 
-    const _nome = "Nilo";
-    const _email = "sssnocs@nilo.ar";
-    const _empresa = "nil S.A";
-    const _autorizacao = true;
+    // const _nome = "Nilo";
+    // const _email = "tesaaate@nilo.ar";
+    // const _empresa = "nil S.A";
+    // const _autorizacao = true;
 
-    const collection = "usuarios";
-    const data = {
-      nome: _nome,
-      email: _email,
-      empresa: _empresa,
-      autorizacao: _autorizacao,
-    };
+    // const data = {
+    //   nome: _nome,
+    //   email: _email,
+    //   empresa: _empresa,
+    //   autorizacao: _autorizacao,
+    // };
+    // const fieldName = "game3";
+    // const newValue = 810;
 
-    addOrUpdateDocument(db, collection, _email, data);
+    // const docRef = collectionDB.doc(_email);
+
+    //Fomulário
+    // addOrUpdateDocument(docRef, data);
+
+    //Nota game
+    // updateIfGreater(window.db, docRef, fieldName, newValue);
+
+    ///listagem Ranking
+    getDocumentsOrderedByField(collectionDB, "maior")
+      .then((results) => {
+        console.log("Documents ordered by field in descending order:");
+        results.forEach((doc) => {
+          console.log(`Document ID: ${doc.id}, Data:`, doc.data);
+        });
+      })
+      .catch((error) => {
+        console.error("Error in getDocumentsOrderedByField: ", error);
+      });
   }
 });
+
+/// Criação do formulario
+bridge.handlerFormDB = function (data) {
+  const docRef = window.collectionDB.doc(data.email);
+  addOrUpdateDocument(docRef, data);
+};
+
+/// Criação da nota do game
+bridge.handlerGameDB = function (email, gameName, point) {
+  const docRef = window.collectionDB.doc(email);
+  updateIfGreater(window.db, docRef, gameName, point);
+};
+
+/// Criação da Ranking
+bridge.listRankingDB = function (call) {
+  getDocumentsOrderedByField(window.collectionDB, "maior")
+    .then((results) => {
+      console.log("Documents ordered by field in descending order:");
+      call(results);
+      //  results.forEach((doc) => {
+      //    console.log(`Document ID: ${doc.id}, Data:`, doc.data);
+      //  });
+    })
+    .catch((error) => {
+      console.error("Error in getDocumentsOrderedByField: ", error);
+    });
+};
