@@ -29,7 +29,7 @@ function countWord(word) {
 }
 
 function activeTime() {
-  countdownTimer(timeGame, () => {
+  window.countdownTimer(timeGame, () => {
     $("body").trigger("game", [gameCurrent, workAll * pointMulti]);
   });
 }

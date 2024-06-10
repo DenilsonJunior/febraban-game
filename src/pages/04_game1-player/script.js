@@ -58,7 +58,7 @@ $(document).ready(function () {
             card.found = false;
           });
 
-          _this.countdownTimer(_this.cardTimeComplete, () => {
+          window.countdownTimer(_this.cardTimeComplete, () => {
             savePointGame();
           });
         }, 1000 * this.cardFlipTimeInit);
@@ -99,35 +99,35 @@ $(document).ready(function () {
         if (foundCards.length == this.cards.length) return true;
       },
 
-      countdownTimer(duration) {
-        let timer = duration;
-        let timePosTip = 40; // Definir o valor inicial dos segundos
-        let miliPosTip = 0; // Definir o valor inicial dos milissegundos
-        
-        const formatTime = (seconds, milliseconds) => {
-            let formattedMinutes = '00';
-            let formattedSeconds = seconds.toString().padStart(2, '0');
-            let formattedMilliseconds = milliseconds.toString().padStart(2, '0');
-            return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
-        };
-    
-        const interval = setInterval(() => {
-            if (timePosTip === 0 && miliPosTip === 0) {
-                clearInterval(interval);
-                this.savePointGame();
-            } else {
-                miliPosTip -= 1;
-                if (miliPosTip < 0) {
-                    miliPosTip = 99;
-                    timePosTip -= 1;
-                }
-            }
-    
-            // Atualizar a exibição do contador
-            const formattedTime = formatTime(timePosTip, miliPosTip);
-            $(".info .value").text(formattedTime);
-        }, 10); // Intervalo de atualização de 10 milissegundos (para corresponder ao intervalo do contador original)
-      },
+      // countdownTimer(duration , call) {
+      //   let timer = duration;
+      //   let timePosTip = duration; // Definir o valor inicial dos segundos
+      //   let miliPosTip = 0; // Definir o valor inicial dos milissegundos
+
+      //   const formatTime = (seconds, milliseconds) => {
+      //       let formattedMinutes = '00';
+      //       let formattedSeconds = seconds.toString().padStart(2, '0');
+      //       let formattedMilliseconds = milliseconds.toString().padStart(2, '0');
+      //       return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
+      //   };
+
+      //   const interval = setInterval(() => {
+      //       if (timePosTip === 0 && miliPosTip === 0) {
+      //           clearInterval(interval);
+      //           this.savePointGame();
+      //       } else {
+      //           miliPosTip -= 1;
+      //           if (miliPosTip < 0) {
+      //               miliPosTip = 99;
+      //               timePosTip -= 1;
+      //           }
+      //       }
+
+      //       // Atualizar a exibição do contador
+      //       const formattedTime = formatTime(timePosTip, miliPosTip);
+      //       $(".info .value").text(formattedTime);
+      //   }, 10); // Intervalo de atualização de 10 milissegundos (para corresponder ao intervalo do contador original)
+      // },
 
       // countdownTimer(duration) {
       //   let timer = duration,
