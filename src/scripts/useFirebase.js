@@ -113,6 +113,35 @@ function addOrUpdateDocument(docRef, data) {
   }
 }
 
+function listenToUpdates(collection, call) {
+  let isInitialLoad = true;
+
+  collection.onSnapshot(
+    (snapshot) => {
+      if (isInitialLoad) {
+        // Ignorar o primeiro snapshot, que é o estado inicial da coleção
+        isInitialLoad = false;
+        return;
+      }
+
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          console.log("New document: ", change.doc.data());
+          call(change);
+        }
+        if (change.type === "modified") {
+          console.log("Modified document: ", change.doc.data());
+          call(change);
+        }
+      });
+    },
+    (err) => {
+      console.log(`Encountered error: ${err}`);
+    }
+  );
+}
+
+///Inicialização do Firebase
 window.initFirebase = false;
 $(document).ready(function () {
   if (!window.initFirebase) {
@@ -147,34 +176,7 @@ bridge.listRankingDB = function (call) {
     });
 };
 
-function listenToUpdates(collection, call) {
-  let isInitialLoad = true;
-
-  collection.onSnapshot(
-    (snapshot) => {
-      if (isInitialLoad) {
-        // Ignorar o primeiro snapshot, que é o estado inicial da coleção
-        isInitialLoad = false;
-        return;
-      }
-
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
-          console.log("New document: ", change.doc.data());
-          call(change);
-        }
-        if (change.type === "modified") {
-          console.log("Modified document: ", change.doc.data());
-          call(change);
-        }
-      });
-    },
-    (err) => {
-      console.log(`Encountered error: ${err}`);
-    }
-  );
-}
-
+/// Controle do formulário via realtime - para mobile
 bridge.handlerSnapshotFormDB = function (call) {
   listenToUpdates(window.collectionDB, call);
 };
