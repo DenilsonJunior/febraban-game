@@ -162,43 +162,34 @@ footer {
 }
 
 .info {
+    @import url(https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap);
     .value {
         width: 2.4em;
-        font-family: 'DS-Digital';
-        font-size: 5.5em !important;
-        color: rgba(0,0,0,.9) !important;
+        font-family: 'Tilt Neon';
+        font-size: 6.5em !important;
+        color: @color-white !important;
         position: relative;
         letter-spacing: 0.05em;
-        animation: neon infinite 3s;
+        animation: flicker 1.5s infinite alternate; 
     }
-    @keyframes neon {
-        0% {
-            opacity: .8;
-            text-shadow: 
-            -.015em -.015em 0 #D9F339, 
-            .015em -.015em 0 #D9F339, 
-            -.015em .015em 0 #D9F339, 
-            .015em .015em 0 #D9F339,
-            .015em .015em 0em #D9F339;
+    @keyframes flicker {
+    
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+          
+            text-shadow:
+                -0.1rem -0.1rem 1rem #fff,
+                0.1rem 0.1rem 1rem #fff,
+                0 0 1rem @color-02,
+                0 0 2rem @color-02,
+                0 0 3rem @color-02,
+                0 0 4rem @color-02,
+                0 0 10rem @color-02;        
         }
-        50% {
-            opacity: 1;
-            text-shadow: 
-            -.015em -.015em 0 #D9F339, 
-            .015em -.015em 0 #D9F339, 
-            -.015em .015em 0 #D9F339, 
-            .015em .015em 0 #D9F339,
-            .015em .015em .3em #D9F339;
-        }
-        100% {
-            opacity: .8;
-            text-shadow: 
-            -.015em -.015em 0 #D9F339, 
-            .015em -.015em 0 #D9F339, 
-            -.015em .015em 0 #D9F339, 
-            .015em .015em 0 #D9F339,
-            .015em .015em 0em #D9F339;
-        }
+        
+        20%, 24%, 55% {        
+            text-shadow: none;
+            box-shadow: none;
+        }    
     }
 }
 
