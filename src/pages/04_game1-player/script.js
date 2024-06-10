@@ -101,30 +101,32 @@ $(document).ready(function () {
 
       countdownTimer(duration) {
         let timer = duration;
-        let minutes, seconds, milliseconds;
+        let timePosTip = 40; // Definir o valor inicial dos segundos
+        let miliPosTip = 0; // Definir o valor inicial dos milissegundos
         
+        const formatTime = (seconds, milliseconds) => {
+            let formattedMinutes = '00';
+            let formattedSeconds = seconds.toString().padStart(2, '0');
+            let formattedMilliseconds = milliseconds.toString().padStart(2, '0');
+            return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
+        };
+    
         const interval = setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            milliseconds = parseInt((timer * 10) % 10, 10);
-
-            // Formatar minutos, segundos e milissegundos com dois dígitos
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            milliseconds = milliseconds < 100 ? "0" + milliseconds : milliseconds < 10 ? "00" + milliseconds : milliseconds;
-
-            // Atualizar a exibição do contador
-            this.time = minutes + ":" + seconds + ":" + milliseconds;
-
-            // Verificar se o temporizador chegou a zero
-            if (--timer < 0) {
+            if (timePosTip === 0 && miliPosTip === 0) {
                 clearInterval(interval);
-                this.time = "00:00:00";
-                // alert("Tempo esgotado!");
-                //navigate.goto(`05_ranking`);
-                // this.savePointGame();
+                this.savePointGame();
+            } else {
+                miliPosTip -= 1;
+                if (miliPosTip < 0) {
+                    miliPosTip = 99;
+                    timePosTip -= 1;
+                }
             }
-        }, 1000);
+    
+            // Atualizar a exibição do contador
+            const formattedTime = formatTime(timePosTip, miliPosTip);
+            $(".info .value").text(formattedTime);
+        }, 10); // Intervalo de atualização de 10 milissegundos (para corresponder ao intervalo do contador original)
       },
 
       // countdownTimer(duration) {
