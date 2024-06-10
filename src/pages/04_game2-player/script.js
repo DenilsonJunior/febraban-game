@@ -8,25 +8,53 @@ $(document).ready(function () {
   var wordArr = selectWord.split("");
 
   var gameCurrent = 2;
-  var timePosTip = 15;
   var tipMax = 3;
   var tipCurrent = 0;
   var wordCalc = 0;
   var keyAll = 0;
   var pointMulti = 10;
 
-  $(".info .value").text(`00:${timePosTip}`);
+  // $(".info .value").text(`00:${timePosTip}`);
+
+  var timePosTip = 15;
+  var miliPosTip = 0;
+
+  function formatTime(seconds, milliseconds) {
+    let formattedMinutes = '00';
+    let formattedSeconds = seconds.toString().padStart(2, '0');
+    let formattedMilliseconds = milliseconds.toString().padStart(2, '0');
+    return `${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
+  }
+
+  $(".info .value").text(formatTime('00', timePosTip, miliPosTip));
+
+  function activeTime() {
+    var intervalId = setInterval(function() {
+        if (timePosTip === 0 && miliPosTip === 0) {
+            clearInterval(intervalId);
+            completeWord();
+        } else {
+            miliPosTip -= 1;
+            if (miliPosTip < 0) {
+                miliPosTip = 99;
+                timePosTip -= 1;
+            }
+        }
+  
+        $(".info .value").text(formatTime(timePosTip, miliPosTip));
+    }, 10)
+  }
 
   function countWord(keys) {
     keyAll += keys;
     // $("body").trigger("game", [gameCurrent, keys]);
   }
 
-  function activeTime() {
-    countdownTimer(timePosTip, () => {
-      completeWord();
-    });
-  }
+  // function activeTime() {
+  //   countdownTimer(timePosTip, () => {
+  //     completeWord();
+  //   });
+  // }
 
   function completeWord() {
     setTimeout(function () {

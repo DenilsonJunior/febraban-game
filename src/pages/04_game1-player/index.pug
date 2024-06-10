@@ -10,7 +10,7 @@ block body
 		+topgame('Jogo da Memória')
 
 		.gameBase
-			p Os nossos docentes especialistas no mercado financeiro vão te ensinar tudo sobre <b>fundamentos, conceitos, regras e práticas</b> que você precisa saber para aplicar no seu dia a dia de trabalho.
+			p Os nossos especialistas compartilham tudo o que você precisa saber sobre o mercado financeiro para o seu desenvolvimento profissional.
 			.cards
 				.card(v-for="card in cards", :class="{ flipped: card.flipped, found: card.found }", @click="flipCard(card)")
 					.back

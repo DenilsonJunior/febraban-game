@@ -27,11 +27,11 @@ $(document).ready(function () {
       turns: 0,
       flipBackTimer: null,
       timer: null,
-      time: "01:00",
+      time: "00:40:00",
       score: 0,
       game: 1,
       cardFlipTimeInit: 3, /// Tempo inicial em que os flip card ficam virados
-      cardTimeComplete: 60 * 1, //60*1 /// tempo do cronometro
+      cardTimeComplete: 40 * 1, //60*1 /// tempo do cronometro
       pairsCorrect: 0, /// Pares corretos de cards
       pointMulti: 10, // Multiplo dos pontos finais
     },
@@ -100,27 +100,55 @@ $(document).ready(function () {
       },
 
       countdownTimer(duration) {
-        let timer = duration,
-          minutes,
-          seconds;
+        let timer = duration;
+        let minutes, seconds, milliseconds;
+        
         const interval = setInterval(() => {
-          minutes = parseInt(timer / 60, 10);
-          seconds = parseInt(timer % 60, 10);
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            milliseconds = parseInt((timer * 10) % 10, 10);
 
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
+            // Formatar minutos, segundos e milissegundos com dois dígitos
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            milliseconds = milliseconds < 100 ? "0" + milliseconds : milliseconds < 10 ? "00" + milliseconds : milliseconds;
 
-          this.time = minutes + ":" + seconds;
+            // Atualizar a exibição do contador
+            this.time = minutes + ":" + seconds + ":" + milliseconds;
 
-          if (--timer < 0) {
-            clearInterval(interval);
-            this.time = "00:00";
-            // alert("Tempo esgotado!");
-            //navigate.goto(`05_ranking`);
-            this.savePointGame();
-          }
+            // Verificar se o temporizador chegou a zero
+            if (--timer < 0) {
+                clearInterval(interval);
+                this.time = "00:00:00";
+                // alert("Tempo esgotado!");
+                //navigate.goto(`05_ranking`);
+                // this.savePointGame();
+            }
         }, 1000);
       },
+
+      // countdownTimer(duration) {
+      //   let timer = duration,
+      //     minutes,
+      //     seconds;
+      //     const interval = setInterval(() => {
+      //       minutes = parseInt(0);
+      //       seconds = parseInt(timer % 60, 10);
+
+      //       minutes = minutes < 10 ? "0" + minutes : minutes;
+      //       seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      //       this.time = minutes + ":" + seconds;
+
+      //       if (--timer < 0) {
+      //         clearInterval(interval);
+      //         this.time = "00:00:00";
+      //         // alert("Tempo esgotado!");
+      //         //navigate.goto(`05_ranking`);
+      //         // this.savePointGame();
+      //       }
+      //     }, 1000);
+      // },
 
       startGame() {
         this.started = true;
