@@ -1,6 +1,10 @@
 $(document).ready(function () {
   var game = localStorage.getItem("game");
 
+  function getRandomNumber() {
+    return Math.floor(Math.random() * (99 - 10 + 1)) + 10;
+  }
+
   $(".cadastro").on("click", function () {
     var name = $("#name").val();
     var email = $("#email").val();
@@ -44,16 +48,21 @@ $(document).ready(function () {
     return regex.test(email);
   }
 
+  var formRandom = getRandomNumber();
+  $(".codeForm").text(formRandom);
+
   setTimeout(() => {
     bridge.handlerSnapshotFormDB((change) => {
       console.log(change.doc.data());
       const data = change.doc.data();
 
-      //localstorage
-      $("body").trigger("setOrUpdateObject", ["user", data]);
-      setTimeout(() => {
-        navigate.goto(`04_game${game}-intro`);
-      }, 1000 * 0.12);
+      if (data.code == formRandom) {
+        //localstorage
+        $("body").trigger("setOrUpdateObject", ["user", data]);
+        setTimeout(() => {
+          navigate.goto(`04_game${game}-intro`);
+        }, 1000 * 0.12);
+      }
     });
   }, 1000 * 2);
 });
