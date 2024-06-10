@@ -31,7 +31,7 @@ $(document).ready(function () {
       score: 0,
       game: 1,
       cardFlipTimeInit: 3, /// Tempo inicial em que os flip card ficam virados
-      cardTimeComplete: 10 * 1, //60*1 /// tempo do cronometro
+      cardTimeComplete: 40 * 1, //60*1 /// tempo do cronometro
       pairsCorrect: 0, /// Pares corretos de cards
       pointMulti: 10, // Multiplo dos pontos finais
     },
