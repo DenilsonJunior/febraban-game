@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="full-iframe mr-fontsize">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../template/page.css">
+    <link rel="stylesheet" href="../../modules/component.slider.css"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="mr-full">
+      <div class="body">
+        <div class="preloader"> 
+          <div class="lds-eclipse">
+            <div class="spinner"></div>
+            <div class="spinner reverse"></div>
+          </div>
+        </div>
+        <header><img class="logo" src="../../assets/img/logo.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          <button class="fullscreen"><img class="img" src="../../assets/img/fullscreen.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          </button>
+        </header><img class="imgTop" src="../../assets/img/topogame.jpg" tabindex="-1" alt="" aria-label="" image-translate=""/>
+        <h2 class="titleRanking">Ranking</h2>
+        <section class="sec1">
+          <p>Você conquistou <b>[<span class='currentScore'>0</span> pontos]</b> ao explorar as experiências educacionais oferecidas pela Febraban Educação. Confira a sua colocação no nosso ranking!</p>
+          <div class="ranking">
+            <div class="boxRanking">
+              <button class="rankingScore hide" data-modal="#pop1">
+                <div class="datBase">
+                  <p class="nome">Nome 1</p>
+                  <p>-</p>
+                  <p class="score">100 pontos</p>
+                </div>
+                <div class="ico"></div>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="sec2">
+          <h2>Temos muito mais para você! </h2>
+          <p>Continue explorando, aprendendo e se envolvendo com as iniciativas educacionais da Febraban. Acesse o nosso site febrabaneducacao.com.br para conhecer as nossas soluções de aprendizagem.</p>
+          <div class="flex"> 
+            <div class="text">
+              <h2>E, não para por aí!</h2>
+              <p>Acesse QR Code para conhecer as nossas soluções In Company feitas especialmente para atender as necessidades e desafios da sua instituição.</p>
+            </div><img class="qr" src="../../assets/img/qrsite.svg" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          </div>
+        </section>
+        <footer>
+          <button onclick="navigate.goto(&quot;02_menu&quot;)">
+            <p>Menu</p>
+          </button>
+        </footer>
+        <div class="modal" id="pop1">
+          <div class="box">
+            <div class="topo">
+              <h2>pontuação</h2>
+              <button class="modal-close"></button>
+            </div>
+            <div class="containerBox">
+              <h3 class="nome">Nome </h3>
+              <div class="flexBox">
+                <h4>Jogo da Memória</h4>
+                <p class="pontos game1">0</p>
+              </div>
+              <div class="flexBox">
+                <h4>Qual é a Certificação</h4>
+                <p class="pontos game2">0</p>
+              </div>
+              <div class="flexBox">
+                <h4>Caça Palavras</h4>
+                <p class="pontos game3">0</p>
+              </div>
+              <div class="flexBox info"> 
+                <p>* A nota do ranking sempre será a maior pontuação obtida pelo jogador em todos os jogos que ele realizou.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../vendor/eventEmitter.js"></script>
+  <script src="../../vendor/jquery.min.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../modules/component.base-page.js"></script>
+  <script src="../../modules/behavior.adaptative.js"></script>
+  <script src="../../modules/component.modal.js"></script>
+  <script src="../../modules/component.slider.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../scripts/resize.js"></script>
+  <script src="../../scripts/animated.js"></script>
+  <script src="../../scripts/gamecontrol.js"></script>
+  <script src="../../scripts/jQuery.ellipsis.js"></script>
+  <script src="script.js"></script>
+</html>

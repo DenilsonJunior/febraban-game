@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="full-iframe mr-fontsize">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../template/page.css">
+    <link rel="stylesheet" href="../../modules/component.slider.css"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="mr-full">
+      <div class="body">
+        <header><img class="logo" src="../../assets/img/logo.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          <button class="fullscreen"><img class="img" src="../../assets/img/fullscreen.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          </button>
+        </header>
+        <section>
+          <h3>Para começar, que tal fornecer as informações para aparecer no nosso ranking?</h3>
+          <div class="form">
+            <div class="input-wrapper">
+              <label for="nome"> 
+                <p>*Nome: </p>
+              </label>
+              <input id="name" type="text"><small class="alertName">Preencha o nome. </small>
+            </div>
+            <div class="input-wrapper">
+              <label for="email"> 
+                <p>*E-mail: </p>
+              </label>
+              <input id="email" type="mail"><small class="alertEmail">E-mail invalido.</small>
+            </div>
+            <div class="input-wrapper">
+              <label for="empresa"> 
+                <p>Empresa: </p>
+              </label>
+              <input id="empresa" type="text">
+            </div>
+            <div class="flex">
+              <div class="boxInput">
+                <input class="check" id="informativo" type="checkbox">
+              </div>
+              <p>Quero receber as informações da Febraban Educação.</p>
+            </div>
+            <button class="cadastro">
+              <h2>Cadastro</h2>
+            </button>
+          </div>
+        </section>
+        <section class="sec2">
+          <div class="flex"> 
+            <div class="text">
+              <h2>Caso prefira!</h2>
+              <p>Acesse o QR Code e cadastre-se no seu celular usando o número abaixo.</p>
+              <h1 class="codeForm" contenteditable spellcheck="false">00</h1>
+            </div><img class="qr" src="../../assets/img/qrform.svg" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          </div>
+        </section>
+        <footer>
+          <button onclick="navigate.goto(&quot;02_menu&quot;)">
+            <p>Menu</p>
+          </button>
+        </footer>
+      </div>
+    </div>
+  </body>
+  <script src="../../vendor/eventEmitter.js"></script>
+  <script src="../../vendor/jquery.min.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../modules/component.base-page.js"></script>
+  <script src="../../modules/behavior.adaptative.js"></script>
+  <script src="../../modules/component.modal.js"></script>
+  <script src="../../modules/component.slider.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../scripts/resize.js"></script>
+  <script src="../../scripts/animated.js"></script>
+  <script src="../../scripts/gamecontrol.js"></script>
+  <script src="../../scripts/jQuery.ellipsis.js"></script>
+  <script src="script.js"></script>
+</html>

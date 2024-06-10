@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="full-iframe mr-fontsize">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../template/page.css">
+    <link rel="stylesheet" href="../../modules/component.slider.css"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="mr-full">
+      <div class="body" id="app">
+        <header><img class="logo" src="../../assets/img/logo.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          <button class="fullscreen"><img class="img" src="../../assets/img/fullscreen.png" tabindex="-1" alt="" aria-label="" image-translate=""/>
+          </button>
+        </header>
+        <div class="boxTop">
+          <h2 class="title">Jogo da Memória</h2>
+          <div class="info"><span class="value">{{ time }} </span></div>
+        </div>
+        <div class="gameBase">
+          <p>Os nossos especialistas compartilham tudo o que você precisa saber sobre o mercado financeiro para o seu desenvolvimento profissional.</p>
+          <div class="cards">
+            <div class="card" v-for="card in cards" :class="{ flipped: card.flipped, found: card.found }" @click="flipCard(card)">
+              <div class="back"></div>
+              <div class="front" :style="{ backgroundImage: 'url(' + card.image + ')' }"></div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <button onclick="navigate.goto(&quot;02_menu&quot;)">
+            <p>Menu</p>
+          </button>
+        </footer>
+      </div>
+    </div>
+  </body>
+  <script src="../../vendor/eventEmitter.js"></script>
+  <script src="../../vendor/jquery.min.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../modules/component.base-page.js"></script>
+  <script src="../../modules/behavior.adaptative.js"></script>
+  <script src="../../modules/component.modal.js"></script>
+  <script src="../../modules/component.slider.js"></script>
+  <script src="../../modules/hammer.min.js"></script>
+  <script src="../../scripts/resize.js"></script>
+  <script src="../../scripts/animated.js"></script>
+  <script src="../../scripts/gamecontrol.js"></script>
+  <script src="../../scripts/jQuery.ellipsis.js"></script>
+  <script src="../../scripts/countdownTimer.js"></script>
+  <script src="../../scripts/vue.min.js"></script>
+  <script src="../../scripts/lodash.min.js"></script>
+  <script src="script.js"></script>
+</html>
