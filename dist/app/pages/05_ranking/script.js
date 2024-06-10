@@ -1,4 +1,4 @@
-$(document).ready(function(){setTimeout(()=>{bridge.listRankingDB(a=>{console.log(a),controlRanking(a),$(".preloader").addClass("hide")})},3e3)});const controlRanking=t=>{const o=getObjectFromLocalStorage("user").email;var a=t.filter(a=>a.id===o)[0].data.maior;$(".currentScore").text(a),$(".nome").ellipsis({lines:1}),t.map((a,t)=>($(".ranking .boxRanking").append(`<button class="rankingScore" item="${t}" data-modal="#pop1">
+$(document).ready(function(){setTimeout(()=>{bridge.listRankingDB(a=>{console.log(a),controlRanking(a),$(".preloader").addClass("hide")})},3e3)});const controlRanking=t=>{const e=getObjectFromLocalStorage("user").email;var a=t.filter(a=>a.id===e)[0].data.maior;$(".currentScore").text(a),$(".nome").ellipsis({lines:1}),t.filter(a=>!a.data.desativo).map((a,t)=>($(".ranking .boxRanking").append(`<button class="rankingScore" item="${t}" data-modal="#pop1">
         
         <div class="datBase">
             <p class="number">${t+1<10?"0":""}${t+1}</p>

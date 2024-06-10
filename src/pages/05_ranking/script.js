@@ -16,22 +16,24 @@ const controlRanking = (results) => {
   $(".currentScore").text(currentPointMax);
   $(".nome").ellipsis({ lines: 1 });
 
-  results.map((item, indice) => {
-    $(".ranking .boxRanking")
-      .append(`<button class="rankingScore" item="${indice}" data-modal="#pop1">
+  results
+    .filter((it) => !it.data.desativo)
+    .map((item, indice) => {
+      $(".ranking .boxRanking")
+        .append(`<button class="rankingScore" item="${indice}" data-modal="#pop1">
         
         <div class="datBase">
             <p class="number">${indice + 1 < 10 ? "0" : ""}${indice + 1}</p>
             <p class="nome" >${item.data.nome || item.data.name}</p>
             <p class="point" >${item.data.maior} ${
-      item.data.maior == 1 ? "ponto" : "pontos"
-    }</p>
+        item.data.maior == 1 ? "ponto" : "pontos"
+      }</p>
         </div>
         <div class="ico"></div>
         </button>`);
 
-    return item;
-  });
+      return item;
+    });
 
   $(".rankingScore").on("click", function () {
     var indice = $(this).attr("item");
