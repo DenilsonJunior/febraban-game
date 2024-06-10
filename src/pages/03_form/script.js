@@ -25,6 +25,7 @@ $(document).ready(function () {
       email: email,
       empresa: empresa,
       informativo: informativo,
+      uid: Date.now(),
     };
 
     //localstorage

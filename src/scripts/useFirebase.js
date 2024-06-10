@@ -79,6 +79,7 @@ function addOrUpdateDocument(docRef, data) {
               email: data.email,
               empresa: data.empresa,
               informativo: data.informativo,
+              uid: data.uid,
             })
             .then(() => {
               console.log("Document successfully update!");
@@ -94,6 +95,7 @@ function addOrUpdateDocument(docRef, data) {
               email: data.email,
               empresa: data.empresa,
               informativo: data.informativo,
+              uid: data.uid,
             })
             .then(() => {
               console.log("Document successfully written!");
