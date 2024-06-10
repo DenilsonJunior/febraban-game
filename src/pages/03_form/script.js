@@ -42,4 +42,17 @@ $(document).ready(function () {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
+
+  setTimeout(() => {
+    bridge.handlerSnapshotFormDB((change) => {
+      console.log(change.doc.data());
+      const data = change.doc.data();
+
+      //localstorage
+      $("body").trigger("setOrUpdateObject", ["user", data]);
+      setTimeout(() => {
+        navigate.goto(`04_game${game}-intro`);
+      }, 1000 * 0.12);
+    });
+  }, 1000 * 2);
 });

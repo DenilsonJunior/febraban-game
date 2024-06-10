@@ -21,7 +21,7 @@ const controlRanking = (results) => {
       .append(`<button class="rankingScore" item="${indice}" data-modal="#pop1">
         
         <div class="datBase">
-            <p class="number">${indice + 1}<p>
+            <p class="number">${indice + 1 < 10 ? "0" : ""}${indice + 1}</p>
             <p class="nome" >${item.data.nome || item.data.name}</p>
             <p class="point" >${item.data.maior} ${
       item.data.maior == 1 ? "ponto" : "pontos"

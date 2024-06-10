@@ -4,16 +4,16 @@
 .body {
     background-color: @color-02;
     position: relative;
-    &::after {
-        content: '';
-        background-image: url(../../assets/img/detal1.png);
-        background-size: cover;
-        width: 100%;
-        height: 40.6em;
-        position: absolute;
-        bottom: 7.5em;
-        z-index: 0;
-    }
+    // &::after {
+    //     content: '';
+    //     background-image: url(../../assets/img/detal1.png);
+    //     background-size: cover;
+    //     width: 100%;
+    //     height: 40.6em;
+    //     position: absolute;
+    //     bottom: 7.5em;
+    //     z-index: 0;
+    // }
 
     section {
         position: relative;
@@ -131,6 +131,30 @@
                     color: @color-white;
                     margin: 0;
                 }
+            }
+        }
+    }
+    
+    .sec2 {
+        padding: 0em 18em 0;
+
+        h2 {
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 3em;
+        }
+
+        .flex {
+            display: flex;
+            gap: 4em;
+
+            .qr {
+                width: 32.5em;
+                height: 32.5em;
             }
         }
     }

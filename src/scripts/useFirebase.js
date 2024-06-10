@@ -139,11 +139,40 @@ bridge.listRankingDB = function (call) {
     .then((results) => {
       console.log("Documents ordered by field in descending order:");
       call(results);
-      //  results.forEach((doc) => {
-      //    console.log(`Document ID: ${doc.id}, Data:`, doc.data);
-      //  });
     })
     .catch((error) => {
       console.error("Error in getDocumentsOrderedByField: ", error);
     });
+};
+
+function listenToUpdates(collection, call) {
+  let isInitialLoad = true;
+
+  collection.onSnapshot(
+    (snapshot) => {
+      if (isInitialLoad) {
+        // Ignorar o primeiro snapshot, que é o estado inicial da coleção
+        isInitialLoad = false;
+        return;
+      }
+
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          console.log("New document: ", change.doc.data());
+          call(change);
+        }
+        if (change.type === "modified") {
+          console.log("Modified document: ", change.doc.data());
+          call(change);
+        }
+      });
+    },
+    (err) => {
+      console.log(`Encountered error: ${err}`);
+    }
+  );
+}
+
+bridge.handlerSnapshotFormDB = function (call) {
+  listenToUpdates(window.collectionDB, call);
 };
