@@ -1,2 +1,2 @@
-$(document).ready(function(){$(".init").on("click",function(){bridge.fullScreen(),navigate.next()});{const e=$(".text"),n=$(".text").text(),c=n;let t=0;const r={current:null};e.text(""),r.current=setInterval(function(){e.text(e.text()+c[t]),++t===c.length&&clearInterval(r.current)},50)}});
+$(document).ready(function(){$(".init").on("click",function(){bridge.fullScreen(),navigate.next()});{const r=$(".text"),c=$(".text").text();let e=0,n=!0;const t={current:null},l={current:null};r.text(""),t.current=setInterval(function(){++e>c.length&&(clearInterval(t.current),clearInterval(l.current),r.text(c))},120),l.current=setInterval(function(){var t=c.slice(0,e);n?r.text(t+"|"):r.text(t+" "),n=!n},150)}});
 //# sourceMappingURL=script.js.map

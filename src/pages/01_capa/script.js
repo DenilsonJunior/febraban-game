@@ -4,26 +4,45 @@ $(document).ready(function() {
         navigate.next();
     });
 
-    inserirNome();
-
     function inserirNome() {
         const $spanText = $('.text');
         const text = $('.text').text();
-
+        
         const textAnima = text; // Defina a variável textAnima com o nome desejado
         let index = 0;
+        let blink = true;
         const intervaloRef = { current: null };
-        
-        $spanText.text(""); // Limpa o conteúdo existente
+        const blinkIntervalRef = { current: null };
     
-        intervaloRef.current = setInterval(function() {
-            // Inserir uma letra do nome a cada 300 milissegundos
-            $spanText.text($spanText.text() + textAnima[index]);
-            index++;
-            // Se todas as letras foram inseridas, parar o intervalo
-            if (index === textAnima.length) {
-                clearInterval(intervaloRef.current);
+        // Limpa o conteúdo existente e prepara a animação
+        $spanText.text("");
+    
+        // Função para atualizar o texto com o efeito de cursor piscando
+        function updateTextWithCursor() {
+            let displayedText = textAnima.slice(0, index);
+            if (blink) {
+                $spanText.text(displayedText + '|');
+            } else {
+                $spanText.text(displayedText + ' ');
             }
-        }, 50);
+            blink = !blink;
+        }
+    
+        // Inicia o intervalo para animar a inserção das letras
+        intervaloRef.current = setInterval(function() {
+            index++;
+            if (index > textAnima.length) {
+                clearInterval(intervaloRef.current);
+                clearInterval(blinkIntervalRef.current);
+                $spanText.text(textAnima); // Remove o cursor final
+            }
+        }, 120); // Ajuste o tempo para digitação
+    
+        // Inicia o intervalo para o cursor piscando
+        blinkIntervalRef.current = setInterval(updateTextWithCursor, 150); // Ajuste o tempo para piscar
     }
+    
+    // Chama a função para inserir o nome com a animação
+    inserirNome();
+    
 });

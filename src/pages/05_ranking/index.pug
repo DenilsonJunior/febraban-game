@@ -14,10 +14,12 @@ block body
 		+header
 
 		+image('topogame.jpg', 'imgTop')
-		h2.titleRanking Ranking
+		h2.titleRanking.textDig Ranking
 
 		section.sec1
-			p Você conquistou <b>[<span class='currentScore'>0</span> pontos]</b> ao explorar as experiências educacionais oferecidas pela Febraban Educação. Confira a sua colocação no nosso ranking!
+			p Você conquistou <b>[<span class='currentScore'>0</span> pontos]</b> no jogo dos Cursos Ao Vivo Febraban Educação.
+			p Confira a sua colocação no nosso ranking:
+
 			.ranking
 				
 				.boxRanking
@@ -30,18 +32,18 @@ block body
 								
 		section.sec2
 			h2 Temos muito mais para você! 
-			p Continue explorando, aprendendo e se envolvendo com as iniciativas educacionais da Febraban. Acesse o nosso site febrabaneducacao.com.br para conhecer as nossas soluções de aprendizagem.
+			p Scaneie o QR Code e entre em contato com o nosso time para conhecer as soluções personalizadas In Company.
 			.flex 
 				.text
 					h2 E, não para por aí!
-					p Acesse QR Code para conhecer as nossas soluções In Company feitas especialmente para atender as necessidades e desafios da sua instituição.
+					p Acesse o nosso site febrabaneducacao.com.br para conhecer as nossas experiências de aprendizagem.
+
 				+image('qrsite.svg', 'qr')
 
 		+footer
 
 		.modal#pop1
 			.box
-				
 				.topo
 					h2 pontuação
 					button.modal-close
@@ -56,7 +58,7 @@ block body
 					.flexBox
 						h4 Caça Palavras
 						p.pontos.game3 0
-					.flexBox.info 
+					.flexBox.smallInfo 
 						p * A nota do ranking sempre será a maior pontuação obtida pelo jogador em todos os jogos que ele realizou.
 					
 				//- .flexBox

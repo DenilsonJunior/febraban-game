@@ -1,6 +1,6 @@
 var config = {
     salvarDados: true,
-    debug: false,
+    debug: true,
     waterMark: false,
     language: 'pt-br',
     lms: {
