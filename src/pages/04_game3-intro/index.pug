@@ -4,11 +4,13 @@ block styles
 	link(rel="stylesheet", href="style.css")
 
 block body
-	.body
+	.body.body02
 		+header
 
 		section
-			+image('pers3.jpg', 'capa')
+			.boxCapa
+				+image('reg3.png', 'pers')
+				h2 Caça Palavras
 			.boxText
 				h2 Regras do Jogo
 				p O objetivo do jogo é localizar o maior número possível de palavras relacionadas aos cursos online (EADs) da Febraban Educação dentro do tempo limite de <b>60 segundos</b>.
@@ -18,7 +20,7 @@ block body
 				p <b>Preparado? Então, vamos lá!</b>
 
 				button.initGame.btnNeon
-					h2 Jogar
+					h2 Play
 		
 		+footer
 		

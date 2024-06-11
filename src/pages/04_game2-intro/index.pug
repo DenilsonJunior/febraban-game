@@ -4,11 +4,13 @@ block styles
 	link(rel="stylesheet", href="style.css")
 
 block body
-	.body
+	.body.body02
 		+header
 
 		section
-			+image('pers2.jpg', 'capa')
+			.boxCapa
+				+image('reg2.png', 'pers')
+				h2 Qual é a Certificação?
 			.boxText
 				h2 Regras do Jogo
 				p O objetivo do jogo é descobrir o nome da Certificação Febraban Educação utilizando as dicas fornecidas e selecionando as letras corretas.
@@ -19,7 +21,7 @@ block body
 				p <b>Preparado? Então, vamos lá!</b>
 
 				button.initGame.btnNeon
-					h2 Jogar
+					h2 Play
 		
 		+footer
 		

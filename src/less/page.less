@@ -55,7 +55,46 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
+    background-color: @color-black;
+}
+.body01 {
+    animation: bodyflicker01 infinite .3s;
+}
+.body02 {
+    animation: bodyflicker02 infinite .3s;
+}
+@keyframes bodyflicker01 {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 
+            0 0 0.1rem #fff,
+            // inset 0 0 0.2rem #fff, 
+            0 0 1rem @color-01, 
+            // inset 0 0 1rem @color-01, 
+            0 0 3rem @color-01, 
+            // inset 0 0 1rem @color-01;
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
+@keyframes bodyflicker02 {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 
+            0 0 0.1rem #fff,
+            // inset 0 0 0.2rem #fff, 
+            0 0 1rem @color-02, 
+            // inset 0 0 1rem @color-02, 
+            0 0 3rem @color-02, 
+            // inset 0 0 1rem @color-02;
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
 }
 ol, ul {
 	list-style: none;
@@ -192,20 +231,33 @@ footer {
     }
 }
 
-.btnNeon {
-    animation: flicker 3s infinite;
+.textNeon {
+    animation: .3s textflicker infinite;
 }
-@keyframes flicker {
-    
+@keyframes textflicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow: 
-            -0.1rem -0.1rem 1rem #fff, 
-            0.1rem 0.1rem 1rem #fff, 
-            0 0 1rem @color-02, 
-            0 0 2rem @color-02, 
-            0 0 3rem @color-02, 
-            0 0 0.01rem @color-02, 
-            0 0 0.4rem @color-02;
+            0.1rem 0.1rem .5rem #fff, 
+            0 0 .8rem @color-01;
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
+
+.btnNeon {
+    animation: flicker 3s infinite;
+    border: solid .4em @color-01;
+    padding: 2em;
+}
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0.1rem 0.1rem .5rem #fff, 
+            0 0 1rem @color-01,
+            -.5em -.5em 1rem @color-01;
         
         box-shadow: 
             0 0 0.1rem #fff,
@@ -246,6 +298,10 @@ ul {
     opacity: 0;
     animation: go-back 1s forwards;
     animation-delay: 0.2s;
+}
+
+h2 {
+    font-weight: 500;
 }
 
 @keyframes go-back {
