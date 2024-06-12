@@ -50,42 +50,62 @@ $(document).ready(function () {
 });
 
 const controlRanking = (results) => {
-  const email = getObjectFromLocalStorage("user")["email"]; ///controlgame
-  const currentUser = results.filter((it) => it.id === email)[0];
+  // Obtém o email do usuário a partir do localStorage
+  const email = getObjectFromLocalStorage("user")["email"];
+  if (!email) {
+    console.error("Email não encontrado no localStorage.");
+    return;
+  }
+
+  // Encontra o usuário atual nos resultados com base no email
+  const currentUser = results.find((it) => it.id === email);
+  if (!currentUser) {
+    console.error("Usuário atual não encontrado nos resultados.");
+    return;
+  }
+
+  // Obtém a maior pontuação do usuário atual
   const currentPointMax = currentUser.data.maior;
 
+  // Atualiza o texto da pontuação atual no elemento com a classe 'currentScore'
   $(".currentScore").text(currentPointMax);
+
+  // Aplica a função ellipsis nos elementos com a classe 'nome'
   $(".nome").ellipsis({ lines: 1 });
 
+  // Filtra os resultados para excluir os desativados e adiciona os botões de ranking
   results
     .filter((it) => !it.data.desativo)
-    .map((item, indice) => {
-      $(".ranking .boxRanking")
-        .append(`<button class="rankingScore" item="${indice}" data-modal="#pop1">
-        
-        <div class="datBase">
+    .forEach((item, indice) => {
+      // Cria o HTML do botão de ranking
+      const buttonHTML = `
+        <button class="rankingScore" data-index="${indice}" data-nome="${item.data.nome || item.data.name}" data-pontos="${item.data.maior}" data-game1="${item.data.game1 || '-'}" data-game2="${item.data.game2 || '-'}" data-game3="${item.data.game3 || '-'}">
+          <div class="datBase">
             <p class="number">${indice + 1 < 10 ? "0" : ""}${indice + 1}</p>
-            <p class="nome" >${item.data.nome || item.data.name}</p>
-            <p class="point" >${item.data.maior} ${
-        item.data.maior == 1 ? "ponto" : "pontos"
-      }</p>
-        </div>
-        <div class="ico"></div>
-        </button>`);
-
-      return item;
+            <p class="nome">${item.data.nome || item.data.name}</p>
+            <p class="point">${item.data.maior} ${item.data.maior == 1 ? "ponto" : "pontos"}</p>
+          </div>
+          <div class="ico"></div>
+        </button>`;
+      
+      // Adiciona o botão de ranking ao DOM
+      $(".ranking .boxRanking").append(buttonHTML);
     });
 
+  // Adiciona um evento de clique a cada botão de ranking
   $(".rankingScore").on("click", function () {
-    var indice = $(this).attr("item");
-    console.log(results[indice]);
+    // Obtém os dados do item clicado a partir dos atributos data do botão
+    const nome = $(this).data("nome");
+    const pontos = $(this).data("pontos");
+    const game1 = $(this).data("game1");
+    const game2 = $(this).data("game2");
+    const game3 = $(this).data("game3");
 
+    // Exibe o modal e atualiza as informações do jogador no modal
     $("#pop1").css("display", "flex");
-    $("#pop1 .nome").text(
-      results[indice].data.nome || results[indice].data.name
-    );
-    $("#pop1 .game1").text(results[indice].data.game1 || "-");
-    $("#pop1 .game2").text(results[indice].data.game2 || "-");
-    $("#pop1 .game3").text(results[indice].data.game3 || "-");
+    $("#pop1 .nome").text(nome);
+    $("#pop1 .game1").text(game1);
+    $("#pop1 .game2").text(game2);
+    $("#pop1 .game3").text(game3);
   });
 };
