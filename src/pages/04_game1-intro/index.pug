@@ -9,8 +9,10 @@ block body
 
 		section
 			.boxCapa
-				+image('reg1.png', 'pers')
-				h2 Jogo da Memória
+				video(src="../../assets/video/video1.mp4" muted loop autoplay) 
+				.boxTitle
+					h2.textNeon Jogo da Memória
+					+image('detalplay.png', 'detal')
 			.boxText
 				h2 Regras do Jogo
 				p O objetivo do jogo é encontrar todos os pares de cartas antes que o tempo acabe.
@@ -18,6 +20,7 @@ block body
 				p Após esse tempo, as cartas serão viradas para baixo novamente e você terá <b>60 segundos</b> para encontrar o maior número de pares de cartas iguais.
 				p A cada par encontrado você receberá <b>10 pontos</b> e a sua recompensa será determinada pela quantidade de pares encontrados.
 				p <b>Preparado? Então, vamos lá!</b>
+			.boxButton
 				button.initGame.btnNeon
 					h2 Play
 		

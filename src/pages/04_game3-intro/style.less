@@ -10,23 +10,34 @@
         height: 165.5em;
         .boxCapa {
             width: 100%;
-            height: 70em;
-            background-image: url(../../assets/img/bgcaparegras.png);
-            background-size: cover;
-            background-color: #f7e3af;
-            position: relative;
-            .pers {
-                height: 100%;
+            background-color: @color-black;
+            video {
+                width: 100%;
             }
-            h2 {
-                color: @color-black;
-                font-size: 7em;
-                font-weight: 500;
-                position: absolute;
-                bottom: 1.3em;
-                left: 2.6em;
-                margin: 0;
-                width: 5em;            
+            .boxTitle {
+                width: 100%;
+                height: 20em;
+                display: flex;
+                align-items: center;
+                background-image: url(../../assets/img/topogame.jpg);
+                background-size: 100%;
+                position: relative;
+                h2 {
+                    color: @color-02;
+                    font-size: 5em;
+                    font-weight: 500;
+                    left: 2.6em;
+                    margin: 0;
+                    width: 6em;
+                    text-transform: uppercase;
+                    margin-left: 3.5em;       
+                }
+                .detal {
+                    width: 25em;
+                    position: absolute;
+                    right: 2.5em;
+                    top: -13em;
+                }
             }
         }
         .boxText {
@@ -36,18 +47,32 @@
                 color: @color-01;
                 margin: 0;
                 text-transform: uppercase;
+                font-weight: 600;
+                font-family: 'Orbitron' !important;
             }
             p {
                 font-size: 3em;
             }
+        }
+        .boxButton {
+            background-image: url(../../assets/img/bgcaparegras2.png);
+            background-size: 100% 100%;
+            background-color: @color-black;
+            width: 100%;
+            height: 20em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 7.5em;
             .initGame {
                 width: 72em;
                 background-color: @color-black;
-                position: absolute;
-                padding: .2em;
-                bottom: 11em;
                 h2 {
+                    margin: 0;
+                    font-size: 5em;
                     color: @color-white;
+                    text-transform: uppercase;
                 }
             }
         }

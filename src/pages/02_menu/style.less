@@ -12,6 +12,9 @@
             font-size: 3em;
             margin: 0;
         }
+        b {
+            font-weight: 600;
+        }
         p + p {
             margin: 1em 0 0;
         }
@@ -19,7 +22,7 @@
 
     .sec2 {
         .box {
-            background-color: @color-black;
+            background-color: @color-01;
             width: 72em;
             height: 6em;
             margin: -3em auto 0;
@@ -37,41 +40,40 @@
     }
 
     .sec2 {
+        background-image: url(../../assets/img/detalmenu.png);
+        background-size: cover;
+        background-position: center;
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 139em;
         button {
-            margin: 3em 0 0;
+            margin: 4em 0 0;
             position: relative;
+            width: 74em;
+            .boxVideo {
+                width: 70em;
+                border-bottom: 1em solid @color-01;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                padding: 0;
+                video {
+                    width: 100%;
+                }
+            }
             .img {
                 width: 60em;
                 position: relative;
                 z-index: 1;
             }
             h2 {
+                color: @color-white;
                 font-size: 5em;
                 margin: .2em 0 0;
                 text-transform: uppercase;
-                color: @color-black;
-            }
-            &::after,
-            &::before {
-                content: '';
-                width: 17.5em;
-                height: 19.5em;
-                // background-image: url(../../assets/img/detal3.png);
-                // background-color: red;
-                background-size: cover;
-                position: absolute;
-                z-index: 0;
-            }
-            &::after {
-                bottom: 10em;
-                right: -13em;
-            }
-            &::before {
-                bottom: 6.3em;
-                left: -13em;
+                margin: .4em 0 0;
             }
         }
     }

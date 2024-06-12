@@ -11,9 +11,9 @@
 
     .titleRanking {
         position: absolute;
-        top: 2.7em;
-        font-size: 7em;
-        left: 2.6em;
+        top: 4.4em;
+        font-size: 5em;
+        left: 3.7em;
         // text-transform: uppercase;
         font-weight: 600;
         color: @color-02;
@@ -21,10 +21,8 @@
     }
 
     .sec1 {
-        background-color: @color-03;
         padding: 4em 18em 0;
-        margin: -.5em 0 0;
-        height: 65em;
+        margin: 0;
         position: relative;
         
         p {
@@ -41,7 +39,7 @@
             width: 64em;
             height: 55em;
             margin: 4em 0 0;
-            position: absolute;
+            // position: absolute;
             z-index: 1;
             border-bottom: .4em solid @color-black;
             padding: 2em 4em;
@@ -133,25 +131,41 @@
                 }
             }
         }
+
+        h2 {
+            font-size: 4.5em;
+            margin: 1em 0 0;
+            text-transform: uppercase;
+            font-family: 'Orbitron' !important;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 1.8em;
+            .qr {
+                width: 20em;
+            }
+        }
     }
 
     .sec2 {
-        padding: 12em 18em 0;
+        padding: 5em 18em;
+        position: absolute;
+        bottom: 7.5em;
+        background-color: @color-black;
         h2 {
             font-size: 4em;
             margin: 0;
+            color: @color-02;
+            text-align: center;
             text-transform: uppercase;
         }
         p {
             font-size: 3em;
-        }
-        .flex {
-            display: flex;
-            gap: 4em;
-            .qr {
-                width: 24.5em;
-                height: 24.5em;
-            }
+            color: @color-white;
+            margin: .5em 0 0;
+            text-align: center;
         }
     }
 

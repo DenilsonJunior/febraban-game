@@ -15,16 +15,22 @@ block body
 			.box
 				p Clique na sua área de interesse.
 			button.menu(game='1')
-				+image('menu1.png','img')
-				h2 Cursos Ao Vivo
+				.boxVideo.btnNeon
+					video(src="../../assets/video/video1.mp4" muted loop autoplay) 
+				//- +image('menu1.png','img')
+				h2.textNeon Cursos Ao Vivo
 			button.menu(game='2')
-				+image('menu2.png','img')
-				h2 Certificação
+				.boxVideo.btnNeon
+					video(src="../../assets/video/video1.mp4" muted loop autoplay) 
+				//- +image('menu2.png','img')
+				h2.textNeon Certificação
 			button.menu(game='3')
-				+image('menu3.png','img')
-				h2 Cursos Online (EAD)
+				.boxVideo.btnNeon
+					video(src="../../assets/video/video1.mp4" muted loop autoplay) 
+				//- +image('menu3.png','img')
+				h2.textNeon Cursos Online (EAD)
 
-		+footer
+		//- +footer
 		
 block scripts
 	script(src="script.js")
