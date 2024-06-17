@@ -3,5 +3,5 @@ $(document).ready(function(){var t=shuffleArray(gameWord),e=t[0].word,a=shuffleA
         <div class="back">
             <span>${t}</span>
         </div>
-        </div>`),t)),$("[key]").on("click",function(){var t=String($(this).attr("key")).toLowerCase();$(`[keycard=${t}]`).addClass("correct"),p(),1<=$(`[keycard=${t}]`).length&&($(this).addClass("used"),c+=$(`[keycard=${t}]`).length,t=$(`[keycard=${t}]`).length,n+=t,c==i.length)&&l()}),console.log(e),console.log(i)});
+        </div>`),t)),$("[key]").on("click",function(){var t=String($(this).attr("key")).toLowerCase();$(`[keycard=${t}]`).addClass("correct"),p(),$(this).addClass("used"),1<=$(`[keycard=${t}]`).length&&(c+=$(`[keycard=${t}]`).length,t=$(`[keycard=${t}]`).length,n+=t,c==i.length)&&l()}),console.log(e),console.log(i)});
 //# sourceMappingURL=script.js.map

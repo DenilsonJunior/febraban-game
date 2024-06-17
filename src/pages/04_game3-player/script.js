@@ -3,6 +3,17 @@ const measures = {
   canvasH: 910,
 };
 
+const allOrientations = [
+  "horizontal",
+  "horizontalBack",
+  "vertical",
+  "verticalUp",
+  "diagonal",
+  "diagonalUp",
+  "diagonalBack",
+  "diagonalUpBack",
+];
+
 const gameCurrent = 3;
 const timeGame = 60 * 1; ///60
 let workAll = 0;
@@ -186,9 +197,12 @@ function gameWordSearch() {
         this.puzzle = wordfind.newPuzzle(this.words, {
           width: this.puzzleWidth,
           height: this.puzzleHeight,
+          orientations: allOrientations,
         });
       } else {
-        this.puzzle = wordfind.newPuzzle(this.words);
+        this.puzzle = wordfind.newPuzzle(this.words, {
+          orientations: allOrientations,
+        });
         this.puzzleWidth = this.puzzle[0].length;
         this.puzzleHeight = this.puzzle.length;
       }
@@ -264,7 +278,6 @@ function gameWordSearch() {
 
       var x_InitSolution = 40;
       var y_InitSolution = 880;
-      var x_SecondCol = 400;
 
       x = x_InitSolution;
       y = y_InitSolution;
@@ -308,12 +321,6 @@ function gameWordSearch() {
 
           // Adicionar uma classe CSS para estilizar a palavra
           li.classList.add("word");
-
-          // Adicionar um evento de clique para marcar a palavra como visitada
-          li.addEventListener("click", () => {
-            // Marcar a palavra como visitada adicionando uma classe CSS
-            li.classList.add("visited");
-          });
         });
       } else {
         // Se a lista de palavras não existir no DOM, exibir um erro no console

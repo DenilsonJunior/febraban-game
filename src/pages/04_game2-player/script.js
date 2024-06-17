@@ -70,8 +70,9 @@ $(document).ready(function () {
     $(`[keycard=${key}]`).addClass("correct");
     tip();
 
+    $(this).addClass("used");
+
     if ($(`[keycard=${key}]`).length >= 1) {
-      $(this).addClass("used");
       wordCalc += $(`[keycard=${key}]`).length;
 
       countWord($(`[keycard=${key}]`).length);

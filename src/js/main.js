@@ -79,6 +79,25 @@ bridge.fullScreen = function () {
   }
 };
 
-$(window).on("beforeunload", function () {});
-$(window).on("unload", function () {});
+$(window).on("beforeunload", function () {
+  localStorage.clear();
+  clearLocalStorage();
+});
+$(window).on("unload", function () {
+  localStorage.clear();
+  clearLocalStorage();
+});
 $(window).on(VIEW_EVENT.READY, function () {});
+
+function clearLocalStorage() {
+  // Acesse o conteúdo do iframe usando jQuery
+  var iframe = $("iframe")[0];
+  var iframeWindow = iframe.contentWindow;
+
+  // Verifique se a função está disponível e então a chame
+  if (typeof iframeWindow.childFunction === "function") {
+    iframeWindow.clearLocalStorage();
+  } else {
+    console.log("Função não encontrada no iframe.");
+  }
+}
