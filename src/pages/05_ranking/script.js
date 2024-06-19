@@ -8,9 +8,9 @@ $(document).ready(function () {
   }, 1000 * 3);
 
   function inserirNome() {
-    const $spanText = $('.textDig');
-    const text = $('.textDig').text();
-    
+    const $spanText = $(".textDig");
+    const text = $(".textDig").text();
+
     const textAnima = text; // Defina a variável textAnima com o nome desejado
     let index = 0;
     let blink = true;
@@ -22,23 +22,23 @@ $(document).ready(function () {
 
     // Função para atualizar o texto com o efeito de cursor piscando
     function updateTextWithCursor() {
-        let displayedText = textAnima.slice(0, index);
-        if (blink) {
-            $spanText.text(displayedText + '|');
-        } else {
-            $spanText.text(displayedText + ' ');
-        }
-        blink = !blink;
+      let displayedText = textAnima.slice(0, index);
+      if (blink) {
+        $spanText.text(displayedText + "|");
+      } else {
+        $spanText.text(displayedText + " ");
+      }
+      blink = !blink;
     }
 
     // Inicia o intervalo para animar a inserção das letras
-    intervaloRef.current = setInterval(function() {
-        index++;
-        if (index > textAnima.length) {
-            clearInterval(intervaloRef.current);
-            clearInterval(blinkIntervalRef.current);
-            $spanText.text(textAnima); // Remove o cursor final
-        }
+    intervaloRef.current = setInterval(function () {
+      index++;
+      if (index > textAnima.length) {
+        clearInterval(intervaloRef.current);
+        clearInterval(blinkIntervalRef.current);
+        $spanText.text(textAnima); // Remove o cursor final
+      }
     }, 180); // Ajuste o tempo para digitação
 
     // Inicia o intervalo para o cursor piscando
@@ -66,9 +66,18 @@ const controlRanking = (results) => {
 
   // Obtém a maior pontuação do usuário atual
   const currentPointMax = currentUser.data.maior;
+  const jsonString = localStorage.getItem("user");
+  const user = JSON.parse(jsonString).current;
+
+  const gameName = {
+    game1: "Cursos ao Vivo",
+    game2: "Cerficação",
+    game3: "Cursos Online (EAD)",
+  };
 
   // Atualiza o texto da pontuação atual no elemento com a classe 'currentScore'
-  $(".currentScore").text(currentPointMax);
+  $(".currentScore").text(user.point);
+  $(".currentGame").text(gameName["game" + user.game]);
 
   // Aplica a função ellipsis nos elementos com a classe 'nome'
   $(".nome").ellipsis({ lines: 1 });
@@ -79,15 +88,23 @@ const controlRanking = (results) => {
     .forEach((item, indice) => {
       // Cria o HTML do botão de ranking
       const buttonHTML = `
-        <button class="rankingScore" data-index="${indice}" data-nome="${item.data.nome || item.data.name}" data-pontos="${item.data.maior}" data-game1="${item.data.game1 || '-'}" data-game2="${item.data.game2 || '-'}" data-game3="${item.data.game3 || '-'}">
+        <button class="rankingScore" data-index="${indice}" data-nome="${
+        item.data.nome || item.data.name
+      }" data-pontos="${item.data.maior}" data-game1="${
+        item.data.game1 || "-"
+      }" data-game2="${item.data.game2 || "-"}" data-game3="${
+        item.data.game3 || "-"
+      }">
           <div class="datBase">
             <p class="number">${indice + 1 < 10 ? "0" : ""}${indice + 1}</p>
             <p class="nome">${item.data.nome || item.data.name}</p>
-            <p class="point">${item.data.maior} ${item.data.maior == 1 ? "ponto" : "pontos"}</p>
+            <p class="point">${item.data.maior} ${
+        item.data.maior == 1 ? "ponto" : "pontos"
+      }</p>
           </div>
           <div class="ico"></div>
         </button>`;
-      
+
       // Adiciona o botão de ranking ao DOM
       $(".ranking .boxRanking").append(buttonHTML);
     });

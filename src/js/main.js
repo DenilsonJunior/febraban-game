@@ -1,4 +1,4 @@
-bridge.fullScreen = function () {
+bridge.fullScreen = function (init = false) {
   const elem = document.documentElement;
 
   function enterFullScreen() {
@@ -75,7 +75,11 @@ bridge.fullScreen = function () {
   ) {
     enterFullScreen();
   } else {
-    exitFullScreen();
+    if (!init) {
+      exitFullScreen();
+    } else {
+      enterFullScreen();
+    }
   }
 };
 

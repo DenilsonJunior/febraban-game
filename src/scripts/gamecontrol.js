@@ -33,12 +33,15 @@ $(document).ready(function () {
     const user = getObjectFromLocalStorage("user");
     const gameName = "game" + game;
 
-    checkAndSaveOrUpdateObject("user", { [gameName]: point });
+    checkAndSaveOrUpdateObject("user", {
+      [gameName]: point,
+      current: { game: game, point: point },
+    });
     bridge.handlerGameDB(user.email, gameName, point);
     navigate.goto(`05_ranking`);
   });
 
-  setupInactivityChecker(1000 * 30, function () {
+  setupInactivityChecker(1000 * 50, function () {
     navigate.goto(`01_capa`);
     // Coloque aqui qualquer outra ação que você deseja executar após 30 segundos de inatividade
   });
